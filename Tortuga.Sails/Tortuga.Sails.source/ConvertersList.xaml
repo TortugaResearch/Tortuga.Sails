@@ -1,0 +1,21 @@
+﻿<ResourceDictionary 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:converters="clr-namespace:Tortuga.Sails.Converters"
+	>
+    <converters:DictionaryConverter x:Key="DictionaryConverter" />
+    <converters:FalseToVisibleConverter x:Key="FalseToVisibleConverter" />
+    <converters:NotConverter x:Key="NotConverter" />
+    <converters:NotNullToTrueConverter x:Key="NotNullToTrueConverter" />
+    <converters:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter" />
+    <converters:NotZeroToTrueConverter x:Key="NotZeroToTrueConverter" />
+    <converters:NotZeroToVisibleConverter x:Key="NotZeroToVisibleConverter" />
+    <converters:NullToTrueConverter x:Key="NullToTrueConverter" />
+    <converters:NullToVisibleConverter x:Key="NullToVisibleConverter" />
+    <converters:StringToLowerConverter x:Key="StringToLowerConverter" />
+    <converters:StringToUpperConverter x:Key="StringToUpperConverter" />
+    <converters:TrueToVisibleConverter x:Key="TrueToVisibleConverter" />
+    <converters:ZeroToTrueConverter x:Key="ZeroToTrueConverter" />
+    <converters:ZeroToVisibleConverter x:Key="ZeroToVisibleConverter" />
+
+</ResourceDictionary>

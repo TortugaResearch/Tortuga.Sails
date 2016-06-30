@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Tortuga.Sails</id>
+    <version></version>
+    <authors>David Tomcik, Jonathan Allen</authors>
+    <copyright>Copyright David Tomcik, Jonathan Allen 2016</copyright>
+    <description>A library for XAML and MVVM style applications.</description>
+    <tags>MVVM, XAML, WPF</tags>
+    <language>en-US</language>
+    <projectUrl>https://github.com/docevaad/Sails</projectUrl>
+    <references>
+      <reference file="Tortuga.Sails.dll" />
+    </references>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net46" />
+      <frameworkAssembly assemblyName="System.ComponentModel.DataAnnotations" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework="net46" />
+
+      <frameworkAssembly assemblyName="PresentationCore" targetFramework="net45" />
+      <frameworkAssembly assemblyName="PresentationCore" targetFramework="net46" />
+
+      <frameworkAssembly assemblyName="PresentationFramework" targetFramework="net46" />
+      <frameworkAssembly assemblyName="PresentationFramework" targetFramework="net45" />
+
+      <frameworkAssembly assemblyName="System.Xaml" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.Xaml" targetFramework="net46" />
+
+      <frameworkAssembly assemblyName="System.Numerics" targetFramework="net45" />
+      <frameworkAssembly assemblyName="System.Numerics" targetFramework="net46" />
+
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework="net45" />
+      <frameworkAssembly assemblyName="WindowsBase" targetFramework="net46" />
+
+    </frameworkAssemblies>
+
+    <dependencies>
+
+      <group targetFramework="net46">
+        <dependency id="Tortuga.Anchor" version="0.8.5985.31190" />
+      </group>
+      <group targetFramework="net45">
+        <dependency id="Tortuga.Anchor" version="0.8.5985.31190" />
+      </group>
+
+    </dependencies>
+  </metadata>
+</package>
