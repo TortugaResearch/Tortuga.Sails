@@ -103,4 +103,11 @@
     <None Include="packages.config" />
     <None Include="Tortuga.Sails.snk" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Tortuga.Sails.source\ConvertersList.xaml">
+      <Link>ConvertersList.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
 </Project>
