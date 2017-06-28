@@ -43,7 +43,7 @@ namespace Tortuga.Sails.Converters
             }
 
             if (value == null)
-                return Visibility.Visible;
+                return newVisibility; ;
 
             if ((bool)value == true)
                 return newVisibility;
