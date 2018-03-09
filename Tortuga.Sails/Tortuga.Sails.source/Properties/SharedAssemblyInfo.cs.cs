@@ -5,6 +5,6 @@ using System.Resources;
 [assembly: AssemblyDescription("A library for XAML and MVVM style applications")]
 
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.1.*")]
+[assembly: AssemblyVersion("1.2.*")]
 [assembly: NeutralResourcesLanguage("")]
 

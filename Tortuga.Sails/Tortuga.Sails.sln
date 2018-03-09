@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tortuga.Sails.source", "Tortuga.Sails.source\Tortuga.Sails.source.csproj", "{AD24FB72-7191-4BEC-BE2E-82CAB1A333CE}"
 EndProject
@@ -17,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Tortuga.Sails.source", "Tests.Tortuga.Sails.source\Tests.Tortuga.Sails.source.csproj", "{26B335A9-B68E-41AB-A7EA-2EE057B8455C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tortuga.Sails.net45", "Tortuga.Sails.net45\Tortuga.Sails.net45.csproj", "{99F6D397-F488-4CE7-B5E8-1E6995004541}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{5A2A099B-32F8-41D0-B61B-3959ACA20585}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,18 +41,27 @@ Global
 		{9B7A5D57-48D9-4A5C-AA92-3BC5F45BDAD0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26B335A9-B68E-41AB-A7EA-2EE057B8455C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{26B335A9-B68E-41AB-A7EA-2EE057B8455C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26B335A9-B68E-41AB-A7EA-2EE057B8455C}.Debug-Unchecked|Any CPU.ActiveCfg = Debug|Any CPU
-		{26B335A9-B68E-41AB-A7EA-2EE057B8455C}.Debug-Unchecked|Any CPU.Build.0 = Debug|Any CPU
+		{26B335A9-B68E-41AB-A7EA-2EE057B8455C}.Debug-Unchecked|Any CPU.ActiveCfg = Debug-Unchecked|Any CPU
+		{26B335A9-B68E-41AB-A7EA-2EE057B8455C}.Debug-Unchecked|Any CPU.Build.0 = Debug-Unchecked|Any CPU
 		{26B335A9-B68E-41AB-A7EA-2EE057B8455C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26B335A9-B68E-41AB-A7EA-2EE057B8455C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{99F6D397-F488-4CE7-B5E8-1E6995004541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{99F6D397-F488-4CE7-B5E8-1E6995004541}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{99F6D397-F488-4CE7-B5E8-1E6995004541}.Debug-Unchecked|Any CPU.ActiveCfg = Debug|Any CPU
-		{99F6D397-F488-4CE7-B5E8-1E6995004541}.Debug-Unchecked|Any CPU.Build.0 = Debug|Any CPU
+		{99F6D397-F488-4CE7-B5E8-1E6995004541}.Debug-Unchecked|Any CPU.ActiveCfg = Debug-Unchecked|Any CPU
+		{99F6D397-F488-4CE7-B5E8-1E6995004541}.Debug-Unchecked|Any CPU.Build.0 = Debug-Unchecked|Any CPU
 		{99F6D397-F488-4CE7-B5E8-1E6995004541}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99F6D397-F488-4CE7-B5E8-1E6995004541}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A2A099B-32F8-41D0-B61B-3959ACA20585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A2A099B-32F8-41D0-B61B-3959ACA20585}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A2A099B-32F8-41D0-B61B-3959ACA20585}.Debug-Unchecked|Any CPU.ActiveCfg = Debug-Unchecked|Any CPU
+		{5A2A099B-32F8-41D0-B61B-3959ACA20585}.Debug-Unchecked|Any CPU.Build.0 = Debug-Unchecked|Any CPU
+		{5A2A099B-32F8-41D0-B61B-3959ACA20585}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A2A099B-32F8-41D0-B61B-3959ACA20585}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BACC4ECC-1E37-4A0A-AD13-FAF7065168A7}
 	EndGlobalSection
 EndGlobal
