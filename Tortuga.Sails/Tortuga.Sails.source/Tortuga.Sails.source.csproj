@@ -22,6 +22,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\Tortuga.Sails.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -68,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Properties\SharedAssemblyInfo.cs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shared\BindingProxy.cs" />
     <Compile Include="shared\DelegateCommand.cs" />
     <Compile Include="shared\DelegateCommand1.cs" />
     <Compile Include="shared\Converters\DelegateConverter.cs" />
@@ -88,6 +91,8 @@
     <Compile Include="shared\Converters\TrueToVisibleConverter.cs" />
     <Compile Include="shared\Converters\ZeroToTrueConverter.cs" />
     <Compile Include="shared\Converters\ZeroToVisibleConverter.cs" />
+    <Compile Include="shared\NotSupportedCommand.cs" />
+    <Compile Include="shared\UnhandledViewModelExceptionEventArgs.cs" />
     <Compile Include="shared\VisualTreeExtensions.cs" />
     <Compile Include="shared\ViewModelBase.cs" />
   </ItemGroup>

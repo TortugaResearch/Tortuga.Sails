@@ -1,18 +1,16 @@
-﻿
-
-using System;
+﻿using System;
 using System.Windows.Input;
 
 namespace Tortuga.Sails
 {
     /// <summary>
-    /// Creates a delegate-based ICommand for which a parameter of type T is needed. 
+    /// Creates a delegate-based ICommand for which a parameter of type T is needed.
     /// </summary>
     public class DelegateCommand<T> : ICommand
     {
-        readonly Func<T, bool> m_CanExecute;
+        private readonly Func<T, bool> m_CanExecute;
 
-        readonly Action<T> m_Command;
+        private readonly Action<T> m_Command;
 
         /// <summary>
         /// Creates a Delegate command
@@ -48,6 +46,7 @@ namespace Tortuga.Sails
         }
 
         private event EventHandler m_CanExecuteChanged;
+
         /// <summary>
         /// Defines the method that determines whether the command can execute in its current state.
         /// </summary>
@@ -81,7 +80,14 @@ namespace Tortuga.Sails
             if (parameter != null && !(parameter is T))
                 throw new ArgumentException($"CommandParameter was of type {parameter.GetType().Name}, but type {typeof(T).Name} or null was expected.", "parameter");
 
-            return CanExecute((T)parameter);
+            T typedParameter;
+            try
+            {
+                typedParameter = (T)parameter;
+            }
+            catch (NullReferenceException) { return true; } //work-around when binding a non-nullable value type
+
+            return CanExecute(typedParameter);
         }
 
         void ICommand.Execute(object parameter)

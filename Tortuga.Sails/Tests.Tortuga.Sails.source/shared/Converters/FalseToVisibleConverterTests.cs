@@ -4,19 +4,17 @@ using Tortuga.Sails.Converters;
 
 namespace Tortuga.Sails.Tests.Converters
 {
-
     [TestClass]
     public class FalseToVisibleConverterTests : ConverterTest<FalseToVisibleConverter>
     {
-
         [TestMethod]
         public void FalseToVisibleConverter_Test()
         {
-            Convert(Visibility.Visible, null);
-            Convert(Visibility.Visible, null, Visibility.Collapsed);
-            Convert(Visibility.Visible, null, Visibility.Hidden);
-            Convert(Visibility.Visible, null, "Collapsed");
-            Convert(Visibility.Visible, null, "Hidden");
+            Convert(Visibility.Collapsed, null);
+            Convert(Visibility.Collapsed, null, Visibility.Collapsed);
+            Convert(Visibility.Hidden, null, Visibility.Hidden);
+            Convert(Visibility.Collapsed, null, "Collapsed");
+            Convert(Visibility.Hidden, null, "Hidden");
 
             Convert(Visibility.Visible, false);
             Convert(Visibility.Visible, false, Visibility.Collapsed);
