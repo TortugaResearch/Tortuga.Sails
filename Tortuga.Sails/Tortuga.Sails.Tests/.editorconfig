@@ -1,0 +1,19 @@
+﻿[*.cs]
+
+# RCS1018: Add accessibility modifiers.
+dotnet_diagnostic.RCS1018.severity = none
+
+# RCS1118: Mark local variable as const.
+dotnet_diagnostic.RCS1118.severity = none
+
+# RCS1015: Use nameof operator.
+dotnet_diagnostic.RCS1015.severity = none
+
+# IDE0016: Use 'throw' expression
+csharp_style_throw_expression = true:none
+
+# RCS1163: Unused parameter.
+dotnet_diagnostic.RCS1163.severity = none
+
+# IDE0039: Use local function
+csharp_style_pattern_local_over_anonymous_function = true:none
