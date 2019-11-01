@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,21 +12,25 @@ namespace Tortuga.Sails
     /// This behavior/attached property causes all of the text in the textbox to be automatically selected when the user tabs into the control. Optionally, it also selects the text when the user clicks on it with the mouse.
     /// </summary>
     /// <remarks>
-    ///
+    ///<para>
     /// xmlns:s="clr-namespace:Tortuga.Sails;assembly=Tortuga.Sails"
-    /// xmlns:i="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
-    ///
+    /// xmlns:b="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
+    ///</para>
+    ///<para>
     /// Attached Property Syntax:
-    ///
+    ///</para>
+    ///<para>   
     /// s:SelectAllTextBoxBehavior.IsEnabled="True"
     /// s:SelectAllTextBoxBehavior.SelectOnMouseClick="True"
-    ///
+    ///</para>
+    ///<para>
     /// Behaviors syntax
-    ///
-    /// &lt;i:Interaction.Behaviors&gt;
+    ///</para>
+    ///<para>    
+    /// &lt;b:Interaction.Behaviors&gt;
     ///     &lt;s:SelectAllTextBoxBehavior OnMouseClick = "True" /&gt;
-    /// &lt;/ i:Interaction.Behaviors&gt;
-    ///
+    /// &lt;/ b:Interaction.Behaviors&gt;
+    ///</para>
     /// </remarks>
     public class SelectAllTextBoxBehavior : i.Behavior<TextBox>
     {
@@ -70,40 +73,24 @@ namespace Tortuga.Sails
 
         private void Target_GotFocus(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("LeftButton: " + Mouse.LeftButton);
-            Debug.WriteLine("MiddleButton: " + Mouse.MiddleButton);
-            Debug.WriteLine("RightButton: " + Mouse.RightButton);
-            Debug.WriteLine("XButton1: " + Mouse.XButton1);
-            Debug.WriteLine("XButton2: " + Mouse.XButton2);
-            if (Mouse.LeftButton == MouseButtonState.Released & Mouse.MiddleButton == MouseButtonState.Released & Mouse.RightButton == MouseButtonState.Released & Mouse.XButton1 == MouseButtonState.Released & Mouse.XButton2 == MouseButtonState.Released)
+            if (Mouse.LeftButton == MouseButtonState.Released && Mouse.MiddleButton == MouseButtonState.Released && Mouse.RightButton == MouseButtonState.Released && Mouse.XButton1 == MouseButtonState.Released && Mouse.XButton2 == MouseButtonState.Released)
             {
                 AssociatedObject.SelectAll();
                 m_AlreadyFocused = true;
-                Debug.WriteLine("GotFocus --> Select All");
-            }
-            else
-            {
-                Debug.WriteLine("GotFocus " + m_AlreadyFocused);
             }
         }
 
         void Target_LostFocus(object sender, RoutedEventArgs e)
         {
             m_AlreadyFocused = false;
-            Debug.WriteLine("LostFocus " + m_AlreadyFocused);
         }
 
         void Target_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (!m_AlreadyFocused & AssociatedObject.SelectionLength == 0 && OnMouseClick)
+            if (!m_AlreadyFocused && (AssociatedObject.SelectionLength == 0 || AssociatedObject.SelectionLength == AssociatedObject.Text.Length) && OnMouseClick)
             {
                 m_AlreadyFocused = true;
                 AssociatedObject.SelectAll();
-                Debug.WriteLine("MouseUp --> Select All");
-            }
-            else
-            {
-                Debug.WriteLine("MouseUp " + m_AlreadyFocused + " OnMouse: " + OnMouseClick);
             }
         }
 
@@ -183,18 +170,14 @@ namespace Tortuga.Sails
 
         static void OnIsEnabledChanged(DependencyObject dpo, DependencyPropertyChangedEventArgs e)
         {
-            var uie = dpo as UIElement;
-            if (uie == null)
-                return;
-
-            var behaviors = i.Interaction.GetBehaviors(uie);
+            var behaviors = i.Interaction.GetBehaviors(dpo);
             var existingBehavior = behaviors.FirstOrDefault(b => b.GetType() == typeof(SelectAllTextBoxBehavior)) as SelectAllTextBoxBehavior;
 
-            if ((bool)e.NewValue == false && existingBehavior != null)
+            if (!(bool)e.NewValue && existingBehavior != null)
             {
                 behaviors.Remove(existingBehavior);
             }
-            else if ((bool)e.NewValue == true && existingBehavior == null)
+            else if ((bool)e.NewValue && existingBehavior == null)
             {
                 behaviors.Add(new SelectAllTextBoxBehavior() { OnMouseClick = GetSelectOnMouseClick(dpo) });
             }
@@ -202,18 +185,14 @@ namespace Tortuga.Sails
 
         static void OnSelectOnMouseClickChanged(DependencyObject dpo, DependencyPropertyChangedEventArgs e)
         {
-            var uie = dpo as UIElement;
-            if (uie == null)
-                return;
-
-            var behaviors = i.Interaction.GetBehaviors(uie);
+            var behaviors = i.Interaction.GetBehaviors(dpo);
             var existingBehavior = behaviors.FirstOrDefault(b => b.GetType() == typeof(SelectAllTextBoxBehavior)) as SelectAllTextBoxBehavior;
 
             if (existingBehavior != null)
             {
                 existingBehavior.OnMouseClick = (bool)e.NewValue;
             }
-            else if ((bool)e.NewValue == true && existingBehavior == null)
+            else if ((bool)e.NewValue && existingBehavior == null)
             {
                 SetIsEnabled(dpo, true);
                 behaviors.Add(new SelectAllTextBoxBehavior() { OnMouseClick = true });

@@ -9,21 +9,25 @@
              This behavior/attached property causes all of the text in the textbox to be automatically selected when the user tabs into the control. Optionally, it also selects the text when the user clicks on it with the mouse.
              </summary>
              <remarks>
-            
+            <para>
              xmlns:s="clr-namespace:Tortuga.Sails;assembly=Tortuga.Sails"
-             xmlns:i="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
-            
+             xmlns:b="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
+            </para>
+            <para>
              Attached Property Syntax:
-            
+            </para>
+            <para>   
              s:SelectAllTextBoxBehavior.IsEnabled="True"
              s:SelectAllTextBoxBehavior.SelectOnMouseClick="True"
-            
+            </para>
+            <para>
              Behaviors syntax
-            
-             &lt;i:Interaction.Behaviors&gt;
+            </para>
+            <para>    
+             &lt;b:Interaction.Behaviors&gt;
                  &lt;s:SelectAllTextBoxBehavior OnMouseClick = "True" /&gt;
-             &lt;/ i:Interaction.Behaviors&gt;
-            
+             &lt;/ b:Interaction.Behaviors&gt;
+            </para>
              </remarks>
         </member>
         <member name="P:Tortuga.Sails.SelectAllTextBoxBehavior.OnMouseClick">

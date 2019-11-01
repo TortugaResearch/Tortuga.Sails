@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfTest461.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfTest461"
+        mc:Ignorable="d"
+        xmlns:s="clr-namespace:Tortuga.Sails;assembly=Tortuga.Sails"
+        xmlns:b="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <Label Content="Box 1"/>
+            <TextBox Width="100" Text="THis is some text" s:SelectAllTextBoxBehavior.IsEnabled="True" />
+            <Label Content="Box 2"/>
+            <TextBox Width="100" Text="More text" >
+                <b:Interaction.Behaviors>
+                    <s:SelectAllTextBoxBehavior  />
+                </b:Interaction.Behaviors>
+            </TextBox>
+            <Button Content="Hello"/>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <Label Content="Box 1"/>
+            <TextBox Width="100" Text="THis is some text" s:SelectAllTextBoxBehavior.SelectOnMouseClick="True" />
+            <Label Content="Box 2"/>
+            <TextBox Width="100" Text="More text" >
+                <b:Interaction.Behaviors>
+                    <s:SelectAllTextBoxBehavior OnMouseClick="True"/>
+                </b:Interaction.Behaviors>
+            </TextBox>
+            <Button Content="Hello"/>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+            <Label Content="Box 1"/>
+            <TextBox Width="100" Text="THis is some text" />
+            <Label Content="Box 2"/>
+            <TextBox Width="100" Text="More text" >
+
+            </TextBox>
+            <Button Content="Hello"/>
+
+        </StackPanel>
+        <StackPanel />
+    </DockPanel>
+</Window>
