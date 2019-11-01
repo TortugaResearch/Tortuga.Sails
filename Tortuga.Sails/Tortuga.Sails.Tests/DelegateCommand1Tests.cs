@@ -11,7 +11,7 @@ namespace Tortuga.Sails.Tests.Commands
         public void DelegateCommand_CanExecute()
         {
             var callCount = 0;
-            var x = new DelegateCommand<string>(_ => callCount++, _ => true);
+            var x = new DelegateCommand<string>(p => callCount++, p => true);
             Assert.AreEqual(true, x.CanExecute(""));
             x.Execute("");
             Assert.AreEqual(1, callCount);
@@ -26,7 +26,7 @@ namespace Tortuga.Sails.Tests.Commands
         public void DelegateCommand_CanExecute2()
         {
             var callCount = 0;
-            var x = new DelegateCommand<string>(_ => callCount++);
+            var x = new DelegateCommand<string>(p => callCount++);
             Assert.AreEqual(true, x.CanExecute(""));
             x.Execute("");
             Assert.AreEqual(1, callCount);
@@ -41,8 +41,8 @@ namespace Tortuga.Sails.Tests.Commands
         public void DelegateCommand_Create()
         {
             var callCount = 0;
-            Action<string> execute = _ => callCount++;
-            Func<string, bool> canExecute = _ => true;
+            Action<string> execute = p => callCount++;
+            Func<string, bool> canExecute = p => true;
 
             var x = DelegateCommand.Create(execute, canExecute);
             Assert.AreEqual(true, x.CanExecute(""));
@@ -89,7 +89,7 @@ namespace Tortuga.Sails.Tests.Commands
             var eventFired = false;
             EventHandler foo = (s, e) => eventFired = true;
 
-            var cmd = new DelegateCommand<string>(_ => { }, _ => true);
+            var cmd = new DelegateCommand<string>(x => { }, x => true);
             cmd.CanExecuteChanged += foo;
             Assert.IsFalse(eventFired);
 
@@ -108,7 +108,7 @@ namespace Tortuga.Sails.Tests.Commands
             var eventFired = false;
             EventHandler foo = (s, e) => eventFired = true;
 
-            var cmd = new DelegateCommand<string>(_ => { }, null);
+            var cmd = new DelegateCommand<string>(x => { }, null);
             cmd.CanExecuteChanged += foo;
             Assert.IsFalse(eventFired);
 
@@ -127,7 +127,7 @@ namespace Tortuga.Sails.Tests.Commands
             try
             {
                 var callCount = 0;
-                var x = new DelegateCommand<string>(_ => callCount++, _ => true);
+                var x = new DelegateCommand<string>(p => callCount++, p => true);
                 var y = (ICommand)x;
                 y.Execute(5);
                 Assert.Fail("Expected an exception");
@@ -144,7 +144,7 @@ namespace Tortuga.Sails.Tests.Commands
             try
             {
                 var callCount = 0;
-                var x = new DelegateCommand<string>(_ => callCount++, _ => true);
+                var x = new DelegateCommand<string>(p => callCount++, p => true);
                 var y = (ICommand)x;
                 y.CanExecute(5);
                 Assert.Fail("Expected an exception");

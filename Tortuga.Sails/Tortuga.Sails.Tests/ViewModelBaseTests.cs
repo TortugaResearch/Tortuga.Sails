@@ -14,7 +14,7 @@ namespace Tortuga.Sails.Tests
             var vm = new MockViewModel();
             var commandInvoked = false;
 
-            var cmd = vm.InvokeGetCommandA<int>("Test", _ => commandInvoked = true);
+            var cmd = vm.InvokeGetCommandA<int>("Test", x => commandInvoked = true);
             Assert.IsFalse(commandInvoked);
 
             Assert.IsTrue(cmd.CanExecute(0));
@@ -30,7 +30,7 @@ namespace Tortuga.Sails.Tests
             var vm = new MockViewModel();
             try
             {
-                vm.InvokeGetCommandA<int>("", _ => { });
+                vm.InvokeGetCommandA<int>("", x => { });
                 Assert.Fail("Expected an exception");
             }
             catch (ArgumentException ex)
@@ -75,7 +75,7 @@ namespace Tortuga.Sails.Tests
             var vm = new MockViewModel();
             var commandInvoked = false;
 
-            ICommand cmd = vm.InvokeGetCommandA<int>("Test", _ => commandInvoked = true);
+            ICommand cmd = vm.InvokeGetCommandA<int>("Test", x => commandInvoked = true);
             Assert.IsFalse(commandInvoked);
 
             try
@@ -95,7 +95,7 @@ namespace Tortuga.Sails.Tests
             var vm = new MockViewModel();
             var commandInvoked = false;
 
-            var cmd = vm.InvokeGetCommandA<int>("Test", _ => commandInvoked = true);
+            var cmd = vm.InvokeGetCommandA<int>("Test", x => commandInvoked = true);
             var commandAssert = new CommandEventAssert(cmd);
 
             cmd.OnCanExecuteChanged();
@@ -109,8 +109,8 @@ namespace Tortuga.Sails.Tests
             var vm = new MockViewModel();
             var commandInvoked = false;
 
-            var cmd1 = vm.InvokeGetCommandA<int>("Test", _ => commandInvoked = true);
-            var cmd2 = vm.InvokeGetCommandA<int>("Test", _ => commandInvoked = true);
+            var cmd1 = vm.InvokeGetCommandA<int>("Test", x => commandInvoked = true);
+            var cmd2 = vm.InvokeGetCommandA<int>("Test", x => commandInvoked = true);
             var cmd3 = vm.Test;
 
             Assert.AreSame(cmd1, cmd2);
@@ -460,7 +460,7 @@ namespace Tortuga.Sails.Tests
             var vm = new MockViewModel();
             var commandInvoked = false;
 
-            var cmd = vm.InvokeGetCommandE("Test", _ => commandInvoked = true, x => false);
+            var cmd = vm.InvokeGetCommandE("Test", x => commandInvoked = true, x => false);
             Assert.IsFalse(commandInvoked);
 
             Assert.IsFalse(cmd.CanExecute(0));

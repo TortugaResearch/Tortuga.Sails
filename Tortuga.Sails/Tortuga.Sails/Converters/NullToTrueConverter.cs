@@ -12,12 +12,12 @@ namespace Tortuga.Sails.Converters
     public class NullToTrueConverter : OneWayMarkupValueConverter<NullToTrueConverter>
     {
         /// <summary>
-        ///
+        /// Converts a value.
         /// </summary>
         /// <param name="value">Any nullable type</param>
         /// <param name="targetType">Boolean</param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
         /// <returns>Returns True if the value is null, otherwise returns false</returns>
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)

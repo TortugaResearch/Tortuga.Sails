@@ -17,15 +17,15 @@ namespace Tortuga.Sails.Converters
     public class DictionaryConverter : MarkupValueConverter<DictionaryConverter>
     {
         /// <summary>
-        ///
+        /// Converts a value.
         /// </summary>
         /// <param name="value">Value to be converted</param>
         /// <param name="targetType">Will return Default(targetType) if the value is null or not found in the dictionary</param>
         /// <param name="parameter">Dictionary to look up values</param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
 
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             CheckRequiredParameterType<IDictionary>(parameter);
 
@@ -40,15 +40,15 @@ namespace Tortuga.Sails.Converters
         }
 
         /// <summary>
-        ///
+        /// Converts a value.
         /// </summary>
         /// <param name="value">Value to be converted</param>
         /// <param name="targetType">Will return Default(targetType) if the value is null or not found in the dictionary</param>
         /// <param name="parameter">Dictionary to look up values</param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
 
-        public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             CheckRequiredParameterType<IDictionary>(parameter);
 
@@ -58,7 +58,7 @@ namespace Tortuga.Sails.Converters
             var dictionary = (IDictionary)parameter;
             var enumerator = dictionary.GetEnumerator();
             while (enumerator.MoveNext())
-                if (enumerator.Value.Equals(value))
+                if (enumerator.Value?.Equals(value) == true)
                     return enumerator.Key;
 
             return Default(targetType);

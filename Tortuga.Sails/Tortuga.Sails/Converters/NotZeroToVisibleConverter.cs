@@ -70,13 +70,14 @@ namespace Tortuga.Sails.Converters
     public partial class NotZeroToVisibleConverter : OneWayMarkupValueConverter<NotZeroToVisibleConverter>
     {
         /// <summary>
-        ///
+        /// Converts a value.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value">The value produced by the binding source.</param>
         /// <param name="targetType">Visibility</param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        /// <exception cref="System.ArgumentException">value is not a number - value</exception>
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -89,7 +90,7 @@ namespace Tortuga.Sails.Converters
             else
             {
                 var stringParameter = parameter as string;
-                if (stringParameter != null && stringParameter.ToUpperInvariant() == "HIDDEN")
+                if (stringParameter != null && string.Equals(stringParameter, "HIDDEN", StringComparison.InvariantCultureIgnoreCase))
                     newVisibility = Visibility.Hidden;
             }
 
@@ -138,7 +139,7 @@ namespace Tortuga.Sails.Converters
             else if (value is BigInteger)
                 returnValue = (BigInteger)value != 0;
             else
-                throw new ArgumentException("value is not a number", "value");
+                throw new ArgumentException($"{nameof(value)} is not a number", nameof(value));
 
             if (returnValue)
                 return Visibility.Visible;

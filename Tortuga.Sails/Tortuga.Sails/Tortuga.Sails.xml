@@ -1,0 +1,927 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Tortuga.Sails</name>
+    </assembly>
+    <members>
+        <member name="T:Tortuga.Sails.SelectAllTextBoxBehavior">
+             <summary>
+             This behavior/attached property causes all of the text in the textbox to be automatically selected when the user tabs into the control. Optionally, it also selects the text when the user clicks on it with the mouse.
+             </summary>
+             <remarks>
+            
+             xmlns:s="clr-namespace:Tortuga.Sails;assembly=Tortuga.Sails"
+             xmlns:i="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
+            
+             Attached Property Syntax:
+            
+             s:SelectAllTextBoxBehavior.IsEnabled="True"
+             s:SelectAllTextBoxBehavior.SelectOnMouseClick="True"
+            
+             Behaviors syntax
+            
+             &lt;i:Interaction.Behaviors&gt;
+                 &lt;s:SelectAllTextBoxBehavior OnMouseClick = "True" /&gt;
+             &lt;/ i:Interaction.Behaviors&gt;
+            
+             </remarks>
+        </member>
+        <member name="P:Tortuga.Sails.SelectAllTextBoxBehavior.OnMouseClick">
+            <summary>
+            Gets or sets a value indicating whether select all occurs on mouse click.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.SelectAllTextBoxBehavior.OnAttached">
+            <summary>
+            Called after the behavior is attached to an AssociatedObject.
+            </summary>
+            <remarks>Override this to hook up functionality to the AssociatedObject.</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.SelectAllTextBoxBehavior.OnDetaching">
+            <summary>
+            Called when the behavior is being detached from its AssociatedObject, but before it has actually occurred.
+            </summary>
+            <remarks>Override this to unhook functionality from the AssociatedObject.</remarks>
+        </member>
+        <member name="F:Tortuga.Sails.SelectAllTextBoxBehavior.IsEnabledProperty">
+            <summary>
+            Backing field for the IsEnabled property
+            </summary>
+        </member>
+        <member name="F:Tortuga.Sails.SelectAllTextBoxBehavior.SelectOnMouseClickProperty">
+            <summary>
+            Backing field for the SelectOnMouseClick property
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.SelectAllTextBoxBehavior.GetIsEnabled(System.Windows.DependencyObject)">
+            <summary>
+            Getter for the IsEnabled property.
+            </summary>
+            <param name="uie">The uie.</param>
+            <exception cref="T:System.ArgumentNullException">uie</exception>
+        </member>
+        <member name="M:Tortuga.Sails.SelectAllTextBoxBehavior.GetSelectOnMouseClick(System.Windows.DependencyObject)">
+            <summary>
+            Getter for the SelectOnMouseClick property.
+            </summary>
+            <param name="uie">The uie.</param>
+            <exception cref="T:System.ArgumentNullException">uie</exception>
+        </member>
+        <member name="M:Tortuga.Sails.SelectAllTextBoxBehavior.SetIsEnabled(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Setter for the IsEnabled property.
+            </summary>
+            <param name="uie">The uie.</param>
+            <param name="value">if set to <c>true</c> to enable this behavior.</param>
+            <exception cref="T:System.ArgumentNullException">uie</exception>
+        </member>
+        <member name="M:Tortuga.Sails.SelectAllTextBoxBehavior.SetSelectOnMouseClick(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            Setter for the SelectOnMouseClick property.
+            </summary>
+            <param name="uie">The uie.</param>
+            <param name="value">if set to <c>true</c> to enable select all on-mouse clicks.</param>
+            <exception cref="T:System.ArgumentNullException">uie</exception>
+        </member>
+        <member name="T:Tortuga.Sails.BindingProxy">
+            <summary>
+            A binding proxy allows a binding expression to be used in a resource dictionary.
+            </summary>
+            <example>
+            &lt;DataGrid.Resources&gt;
+                   &lt;sails:BindingProxy x:Key="proxy" Data="{Binding}" /&gt;
+            &lt;/DataGrid.Resources&gt;
+            </example>
+        </member>
+        <member name="F:Tortuga.Sails.BindingProxy.DataProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Data.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="P:Tortuga.Sails.BindingProxy.Data">
+            <summary>
+            Data-bindable property.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.BindingProxy.CreateInstanceCore">
+            <summary>
+            When implemented in a derived class, creates a new instance of the <see cref="T:System.Windows.Freezable" /> derived class.
+            </summary>
+            <returns>The new instance.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.NoInheritanceContentControl">
+            <summary>
+            Whatever this control wraps will not inherit styles from its parent.
+            </summary>
+            <seealso cref="T:System.Windows.Controls.ContentControl" />
+        </member>
+        <member name="M:Tortuga.Sails.NoInheritanceContentControl.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tortuga.Sails.NoInheritanceContentControl"/> class.
+            </summary>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.ValueConversion">
+            <summary>
+            This represents a IValueConverter conversion function.
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.DelegateConverter">
+            <summary>
+            Class DelegateConverter.
+            Implements the <see cref="T:System.Windows.Data.IValueConverter" />
+            </summary>
+            <seealso cref="T:System.Windows.Data.IValueConverter" />
+        </member>
+        <member name="M:Tortuga.Sails.Converters.DelegateConverter.#ctor(Tortuga.Sails.Converters.ValueConversion)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tortuga.Sails.Converters.DelegateConverter"/> class.
+            </summary>
+            <param name="convert">The convert.</param>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.DelegateConverter.#ctor(Tortuga.Sails.Converters.ValueConversion,Tortuga.Sails.Converters.ValueConversion)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tortuga.Sails.Converters.DelegateConverter"/> class.
+            </summary>
+            <param name="convert">The convert.</param>
+            <param name="convertBack">The convert back.</param>
+            <exception cref="T:System.ArgumentNullException">convert</exception>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.DelegateConverter.#ctor(System.Func{System.Object,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tortuga.Sails.Converters.DelegateConverter"/> class.
+            </summary>
+            <param name="convert">The convert.</param>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.DelegateConverter.#ctor(System.Func{System.Object,System.Object},System.Func{System.Object,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tortuga.Sails.Converters.DelegateConverter"/> class.
+            </summary>
+            <param name="convert">The convert.</param>
+            <param name="convertBack">The convert back.</param>
+            <exception cref="T:System.ArgumentNullException">convert</exception>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.DelegateConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Modifies the source data before passing it to the target for display in the UI.
+            </summary>
+            <param name="value">The source data being passed to the target.</param>
+            <param name="targetType">The <see cref="T:System.Type" /> of data expected by the target dependency property.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The culture of the conversion.</param>
+            <returns>The value to be passed to the target dependency property.</returns>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.DelegateConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Modifies the target data before passing it to the source object.  This method is called only in <see cref="F:System.Windows.Data.BindingMode.TwoWay" /> bindings.
+            </summary>
+            <param name="value">The target data being passed to the source.</param>
+            <param name="targetType">The <see cref="T:System.Type" /> of data expected by the source object.</param>
+            <param name="parameter">An optional parameter to be used in the converter logic.</param>
+            <param name="culture">The culture of the conversion.</param>
+            <returns>The value to be passed to the source object.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.DictionaryConverter">
+            <summary>
+            This performs a dictionary lookup for conversion. The IDictionary is passed as the converter parameter.
+            Convert goes from Key-->Value.
+            ConvertBack goes from Value-->Key using the first matching value.
+            If a key/value isn't found in the dictionary then default(targetType) is returned.
+            If the value parameter is null then default(targetType) is returned.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.DictionaryConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Value to be converted</param>
+            <param name="targetType">Will return Default(targetType) if the value is null or not found in the dictionary</param>
+            <param name="parameter">Dictionary to look up values</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.DictionaryConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Value to be converted</param>
+            <param name="targetType">Will return Default(targetType) if the value is null or not found in the dictionary</param>
+            <param name="parameter">Dictionary to look up values</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.FalseToVisibleConverter">
+            <summary>
+            Use this converter to show a control when the bound value is false. Null/true will hide the control.
+            For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.FalseToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Boolean</param>
+            <param name="targetType">Visibility</param>
+            <param name="parameter">Visibility to use when the bound value is true or null.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1">
+            <summary>
+            Base class for value converters that are also exposed as a markup extension.
+            </summary>
+            <typeparam name="T">T is always the class inherits from MarkupValueConverter.</typeparam>
+            <remarks>To save memory instances of this class are created and then replaced with a singleton</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.#ctor">
+            <summary>
+            This constructor verifies the concrete type was passed as the T parameter.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.CheckRequiredParameterType(System.Object,System.Type[])">
+            <summary>
+            Throws an exception if the indicated value isn't in the indicated type
+            </summary>
+            <param name="parameter">parameter being used for conversion</param>
+            <param name="validParameterTypes"></param>
+            <remarks>This does not look at type inheritance</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">
+            The value produced by the binding source.
+            </param>
+            <param name="targetType">
+            The type of the binding target property.
+            </param>
+            <param name="parameter">
+            The converter parameter to use.
+            </param>
+            <param name="culture">
+            The culture to use in the converter.
+            </param>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value. 
+            </summary>
+            <returns>
+            A converted value. If the method returns null, the valid null value is used.
+            </returns>
+            <param name="value">
+            The value that is produced by the binding target.
+            </param>
+            <param name="targetType">
+            The type to convert to.
+            </param>
+            <param name="parameter">
+            The converter parameter to use.
+            </param>
+            <param name="culture">
+            The culture to use in the converter.
+            </param>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.ProvideValue(System.IServiceProvider)">
+            <summary>
+            When implemented in a derived class, returns an object that is set as the value of the target property for this markup extension. 
+            </summary>
+            <returns>
+            The object value to set on the property where the extension is applied. 
+            </returns>
+            <param name="serviceProvider">
+            Object that can provide services for the markup extension.
+            </param>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.CheckParameterType``1(System.Object)">
+            <summary>
+            Throws an exception if the indicated value isn't in the indicated type
+            </summary>
+            <typeparam name="TValueType"></typeparam>
+            <param name="parameter">parameter being used for conversion</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.CheckParameterType(System.Object,System.Type[])">
+            <summary>
+            Throws an exception if the indicated value isn't null or the indicated type
+            </summary>
+            <param name="parameter">parameter being used for conversion</param>
+            <param name="validParameterTypes"></param>
+            <remarks>This does not look at type inheritance</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.CheckRequiredParameterType``1(System.Object)">
+            <summary>
+            Throws an exception if the indicated value isn't in the indicated type
+            </summary>
+            <typeparam name="TValueType"></typeparam>
+            <param name="parameter">parameter being used for conversion</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.CheckTargetType(System.Type,System.Type[])">
+            <summary>
+            Throws an exception if the indicated type isn't in the list of valid types.
+            </summary>
+            <param name="targetType">Type to check</param>
+            <param name="validTargetTypes">List of types that are valid.</param>
+            <remarks>This does not look at type inheritance</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.CheckValueType(System.Object,System.Type[])">
+            <summary>
+            Throws an exception if the indicated value isn't in the list of valid types.
+            </summary>
+            <param name="value">value being converted</param>
+            <param name="validValueTypes">List of types that are valid.</param>
+            <remarks>This does not look at type inheritance</remarks>     
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.CheckValueType``1(System.Object)">
+            <summary>
+            Throws an exception if the indicated value isn't in the indicated type
+            </summary>
+            <typeparam name="TValueType"></typeparam>
+            <param name="value">value being converted</param>
+            <remarks>This does not look at type inheritance</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.MarkupValueConverter`1.Default(System.Type)">
+            <summary>
+            Returns Default(targetType)
+            </summary>
+            <param name="targetType"></param>
+            <returns>Null for reference types, and empty instance for value types</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.Internals.NormalizingMarkupValueConverter`1">
+            <summary>
+            Base class for normalizing value converters for which Convert and BackConvert return the same value.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.NormalizingMarkupValueConverter`1.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            See the documentation for the Convert method on the subclass
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.Internals.OneWayMarkupValueConverter`1">
+            <summary>
+            Base class for one-way value converters
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.Internals.OneWayMarkupValueConverter`1.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            This method always throws a NotImplementedException
+            </summary>
+            <param name="value"></param>
+            <param name="targetType"></param>
+            <param name="parameter"></param>
+            <param name="culture"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.NotConverter">
+            <summary>
+            Inverts a boolean or nullable boolean. This is a two-way converter.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NotConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Boolean</param>
+            <param name="targetType">Boolean</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NotConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value that is produced by the binding target.</param>
+            <param name="targetType">The type to convert to.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.NotNullToTrueConverter">
+            <summary>
+            Returns True if the value is not null, otherwise returns false
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NotNullToTrueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">Boolean</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>True if the value is not null, otherwise returns false</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.NotNullToVisibleConverter">
+            <summary>
+            Use this converter to hide a control when the bound value is null or an empty string.
+            For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NotNullToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">Visibility</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.NotZeroToTrueConverter">
+            <summary>
+            Converts null to false.
+            Converts 0 to false, other numbers to true.
+            Throws if the type isn't a number, string, or list
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NotZeroToTrueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">Boolean</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+            <exception cref="T:System.ArgumentException">value is not a number, string, or list - value</exception>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.NotZeroToVisibleConverter">
+            <summary>
+            Converts null to Collapsed.
+            Converts 0 to Collapsed, other numbers to Visible.
+            Throws on non-numeric types
+            For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NotZeroToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">Visibility</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+            <exception cref="T:System.ArgumentException">value is not a number - value</exception>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.NullToTrueConverter">
+            <summary>
+            Returns True if the value is null, otherwise returns false
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NullToTrueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Any nullable type</param>
+            <param name="targetType">Boolean</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>Returns True if the value is null, otherwise returns false</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.NullToVisibleConverter">
+            <summary>
+            Use this converter to show a control when the bound value is null or an empty string.
+            For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NullToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Any nullable type</param>
+            <param name="targetType">Visibility</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.StringToLowerConverter">
+            <summary>
+            Converts a string to lowercase. This supports the culture parameter.
+            If used for two-way binding then the value is lowercased in both directions.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.StringToLowerConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">String</param>
+            <param name="targetType">String</param>
+            <param name="parameter">Culture to use for conversion. Optional.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.StringToUpperConverter">
+            <summary>
+            Converts a string to uppercase. This supports the culture parameter.
+            If used for two-way binding then the value is uppercased in both directions.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.StringToUpperConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">String</param>
+            <param name="targetType">String</param>
+            <param name="parameter">Culture to use for the conversion. Optional.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.TrueToVisibleConverter">
+            <summary>
+            Use this converter to show a control when the bound value is true. Null/false will hide the control.
+            For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.TrueToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Boolean</param>
+            <param name="targetType">Visibility</param>
+            <param name="parameter">Visibility to use when value is true. Defaults to Collapsed.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.ZeroToTrueConverter">
+            <summary>
+            Converts null to false.
+            Converts 0 to true, other numbers to false.
+            Throws if the type isn't a number, string, or list
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.ZeroToTrueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Any numeric type</param>
+            <param name="targetType">Boolean</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+            <exception cref="T:System.ArgumentException">value is not a number - value</exception>
+        </member>
+        <member name="T:Tortuga.Sails.Converters.ZeroToVisibleConverter">
+            <summary>
+            Converts null to Collapsed.
+            Converts 0 to Collapsed, other numbers to Visible.
+            Throws on non-numeric types
+            For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.ZeroToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">Visibility</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+            <exception cref="T:System.ArgumentException">value is not a number - value</exception>
+        </member>
+        <member name="T:Tortuga.Sails.DelegateCommand">
+            <summary>
+            Creates a delegate-based ICommand for which a command parameter is not needed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand.#ctor(System.Action,System.Func{System.Boolean})">
+            <summary>
+            Creates a Delegate command
+            </summary>
+            <param name="command"></param>
+            <param name="canExecute"></param>
+        </member>
+        <member name="E:Tortuga.Sails.DelegateCommand.CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether or not the command should execute.
+            </summary>
+            <remarks> This event only exists if a CanExecute delegate is provided. Otherwise add/remove are no-ops.</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand.Create``1(System.Action{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Wraps the specified delegate in a DelegateCommand.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="command">The Command delegate.</param>
+            <param name="canExecute">An optional CanExecute delegate.</param>
+            <returns></returns>
+            <remarks>This is just a convenience method for the DelegateCommand constructor for type inference.</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand.CanExecute">
+            <summary>
+            Defines the method that determines whether the command can execute in its current state.
+            </summary>
+            <returns>
+            true if this command can be executed; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand.System#Windows#Input#ICommand#CanExecute(System.Object)">
+            <summary>
+            Defines the method that determines whether the command can execute in its current state.
+            </summary>
+            <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to null.</param>
+            <returns>
+            true if this command can be executed; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand.Execute">
+            <summary>
+            Defines the method to be called when the command is invoked.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand.System#Windows#Input#ICommand#Execute(System.Object)">
+            <summary>
+            Defines the method to be called when the command is invoked.
+            </summary>
+            <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to null.</param>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand.OnCanExecuteChanged">
+            <summary>
+            Raises a CanExecuteChanged event.
+            </summary>
+        </member>
+        <member name="T:Tortuga.Sails.DelegateCommand`1">
+            <summary>
+            Creates a delegate-based ICommand for which a parameter of type T is needed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand`1.#ctor(System.Action{`0},System.Func{`0,System.Boolean})">
+            <summary>
+            Creates a Delegate command
+            </summary>
+            <param name="command"></param>
+            <param name="canExecute"></param>
+        </member>
+        <member name="E:Tortuga.Sails.DelegateCommand`1.CanExecuteChanged">
+            <summary>
+            Occurs when changes occur that affect whether or not the command should execute.
+            </summary>
+            <remarks> This event only exists if a CanExecute delegate is provided. Otherwise add/remove are no-ops.</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand`1.CanExecute(`0)">
+            <summary>
+            Defines the method that determines whether the command can execute in its current state.
+            </summary>
+            <returns>
+            true if this command can be executed; otherwise, false.
+            </returns>
+            <param name="parameter">
+            Data used by the command.  If the command does not require data to be passed, this object can be set to null.
+            </param>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand`1.Execute(`0)">
+            <summary>
+            Defines the method to be called when the command is invoked.
+            </summary>
+            <param name="parameter">
+            Data used by the command.  If the command does not require data to be passed, this object can be set to null.
+            </param>
+        </member>
+        <member name="M:Tortuga.Sails.DelegateCommand`1.OnCanExecuteChanged">
+            <summary>
+            Raises a CanExecuteChanged event.
+            </summary>
+        </member>
+        <member name="T:Tortuga.Sails.NotSupportedCommand">
+            <summary>
+            This represents an ICommand that isn't supported. It is used in abstract base classes where subclasses may optionally override it.
+            </summary>
+            <seealso cref="T:System.Windows.Input.ICommand" />
+        </member>
+        <member name="F:Tortuga.Sails.NotSupportedCommand.Value">
+            <summary>
+            NotSupportedCommand singleton.
+            </summary>
+        </member>
+        <member name="T:Tortuga.Sails.UnhandledViewModelExceptionEventArgs">
+            <summary>
+            Class UnhandledViewModelExceptionEventArgs.
+            </summary>
+            <seealso cref="T:System.EventArgs" />
+        </member>
+        <member name="M:Tortuga.Sails.UnhandledViewModelExceptionEventArgs.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Tortuga.Sails.UnhandledViewModelExceptionEventArgs"/> class.
+            </summary>
+            <param name="exception">The exception.</param>
+        </member>
+        <member name="P:Tortuga.Sails.UnhandledViewModelExceptionEventArgs.Exception">
+            <summary>
+            Gets the exception.
+            </summary>
+            <value>The exception.</value>
+        </member>
+        <member name="P:Tortuga.Sails.UnhandledViewModelExceptionEventArgs.Handled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Tortuga.Sails.UnhandledViewModelExceptionEventArgs"/> has been handled.
+            </summary>
+            <value><c>true</c> if handled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Tortuga.Sails.ViewModelBase">
+            <summary>
+            Base class for view models.
+            </summary>
+        </member>
+        <member name="E:Tortuga.Sails.ViewModelBase.UnhandledCommandError">
+            <summary>
+            Occurs when a Command throws an exception.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.ViewModelBase.GetCommand``1(System.Action{``0},System.String)">
+            <summary>
+            Returns an ICommand wrapped around the provided action.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="command">The command.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>DelegateCommand&lt;T&gt;.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            command
+            or
+            propertyName
+            </exception>
+            <exception cref="T:System.ArgumentException">propertyName</exception>
+        </member>
+        <member name="M:Tortuga.Sails.ViewModelBase.GetCommand(System.Action{System.Object},System.String)">
+            <summary>
+            Returns an ICommand wrapped around the provided action.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>DelegateCommand&lt;System.Object&gt;.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            command
+            or
+            propertyName
+            </exception>
+            <exception cref="T:System.ArgumentException">propertyName</exception>
+        </member>
+        <member name="M:Tortuga.Sails.ViewModelBase.GetCommand(System.Action,System.String)">
+            <summary>
+            Returns an ICommand wrapped around the provided action.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>DelegateCommand.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            command
+            or
+            propertyName
+            </exception>
+            <exception cref="T:System.ArgumentException">propertyName</exception>
+        </member>
+        <member name="M:Tortuga.Sails.ViewModelBase.GetCommand``1(System.Action{``0},System.Func{``0,System.Boolean},System.String)">
+            <summary>
+            Returns an ICommand wrapped around the provided action.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="command">The command.</param>
+            <param name="canExecute">The can execute.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>DelegateCommand&lt;T&gt;.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            command
+            or
+            propertyName
+            </exception>
+            <exception cref="T:System.ArgumentException">propertyName</exception>
+        </member>
+        <member name="M:Tortuga.Sails.ViewModelBase.GetCommand(System.Action{System.Object},System.Func{System.Object,System.Boolean},System.String)">
+            <summary>
+            Returns an ICommand wrapped around the provided action.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="canExecute">The can execute.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>DelegateCommand&lt;System.Object&gt;.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            command
+            or
+            propertyName
+            </exception>
+            <exception cref="T:System.ArgumentException">propertyName</exception>
+        </member>
+        <member name="M:Tortuga.Sails.ViewModelBase.GetCommand(System.Action,System.Func{System.Boolean},System.String)">
+            <summary>
+            Returns an ICommand wrapped around the provided action.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="canExecute">The can execute.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>DelegateCommand.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            command
+            or
+            propertyName
+            </exception>
+            <exception cref="T:System.ArgumentException">propertyName</exception>
+        </member>
+        <member name="T:Tortuga.Sails.VisualTreeExtensions">
+            <summary>
+            Helper functions for the visual tree
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.VisualTreeExtensions.ContainsFocus(System.Windows.DependencyObject)">
+            <summary>
+            Returns true is the control or one of its children has the focus.
+            </summary>
+            <param name="control">The control.</param>
+            <returns></returns>
+            <remarks>
+            This starts at the focused object and walks the visual tree upwards
+            </remarks>
+        </member>
+        <member name="M:Tortuga.Sails.VisualTreeExtensions.FocusRecursive(System.Windows.DependencyObject)">
+            <summary>
+            This gives the focus to the indicated control. If it is not focusable, walk the visual tree until a control that can accept it is found.
+            </summary>
+            <param name="control">The control.</param>
+            <returns>
+            True if a control accepted the focus.
+            </returns>
+            <remarks>
+            This uses a depth-first search.
+            </remarks>
+        </member>
+        <member name="M:Tortuga.Sails.VisualTreeExtensions.GetVisualChild``1(System.Windows.DependencyObject)">
+            <summary>
+            Gets the first visual child of the given type for the indicated control.
+            </summary>
+            <typeparam name="T">Type to search for</typeparam>
+            <param name="control">The control.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tortuga.Sails.VisualTreeExtensions.GetVisualChild(System.Windows.DependencyObject,System.Type)">
+            <summary>
+            Gets the first visual child of the given type for the indicated control.
+            </summary>
+            <param name="control">The control.</param>
+            <param name="targetType">Type to search for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tortuga.Sails.VisualTreeExtensions.GetVisualParent``1(System.Windows.DependencyObject)">
+            <summary>
+            Gets the visual parent of a given type for the indicated control.
+            </summary>
+            <typeparam name="T">Type to search for</typeparam>
+            <param name="control">The control.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Tortuga.Sails.VisualTreeExtensions.GetVisualParent(System.Windows.DependencyObject,System.Type)">
+            <summary>
+            Gets the visual parent of a given type for the indicated control.
+            </summary>
+            <param name="control">The control.</param>
+            <param name="targetType">Type to search for.</param>
+            <returns></returns>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

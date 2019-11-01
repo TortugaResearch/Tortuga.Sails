@@ -3,7 +3,7 @@
 namespace Tortuga.Sails
 {
     /// <summary>
-    /// A binding proxy allows a bindin expression to be used in a resource dictionary.
+    /// A binding proxy allows a binding expression to be used in a resource dictionary.
     /// </summary>
     /// <example>
     /// &lt;DataGrid.Resources&gt;
@@ -28,7 +28,7 @@ namespace Tortuga.Sails
         }
 
         /// <summary>
-        /// When implemented in a derived class, creates a new instance of the <see cref="T:System.Windows.Freezable" /> derived class.
+        /// When implemented in a derived class, creates a new instance of the <see cref="System.Windows.Freezable" /> derived class.
         /// </summary>
         /// <returns>The new instance.</returns>
         protected override Freezable CreateInstanceCore()

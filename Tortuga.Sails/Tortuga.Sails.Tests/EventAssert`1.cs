@@ -2,62 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Input;
 
 namespace Tortuga.Sails.Tests
 {
-    /// <summary>
-    /// Assertions for ICommand
-    /// </summary>
-    public class CommandEventAssert : EventAssert<EventArgs>
-    {
-        readonly ICommand m_Source;
-
-        /// <summary>
-        /// Creates a new ICommand assertion
-        /// </summary>
-        /// <param name="source"></param>
-        public CommandEventAssert(ICommand source)
-            : base(source)
-        {
-            if (source == null)
-                throw new ArgumentNullException("source", "source is null.");
-
-            m_Source = source;
-            m_Source.CanExecuteChanged += SourceEventFired;
-        }
-
-        /// <summary>
-        /// Asserts that an event is in the queue and that it has the indicated properties.
-        /// </summary>
-        /// <param name="expectedResult">Expected result from calling CanExecute(commandParameter)</param>
-        /// <returns>This will remove the event from the queue.</returns>
-        public EventPair<EventArgs> Expect(bool expectedResult)
-        {
-            return Expect(expectedResult, null);
-        }
-
-        /// <summary>
-        /// Asserts that an event is in the queue and that it has the indicated properties.
-        /// </summary>
-        /// <param name="expectedResult">Expected result from calling CanExecute(commandParameter)</param>
-        /// <param name="commandParameter">Parameter to pass to CanExecute</param>
-        /// <returns>This will remove the event from the queue.</returns>
-        public EventPair<EventArgs> Expect(bool expectedResult, object commandParameter)
-        {
-            var nextEvent = Expect();
-            Assert.AreEqual(expectedResult, m_Source.CanExecute(commandParameter));
-            return nextEvent;
-        }
-    }
-
     /// <summary>
 	/// Base class for event assertions
 	/// </summary>
 	/// <typeparam name="TEventArgs"></typeparam>
 	public abstract class EventAssert<TEventArgs> where TEventArgs : EventArgs
     {
-        readonly Queue<EventPair<TEventArgs>> m_Queue = new Queue<EventPair<TEventArgs>>();
         readonly object m_Source;
 
         /// <summary>
@@ -77,13 +30,10 @@ namespace Tortuga.Sails.Tests
         /// </summary>
         public int Count
         {
-            get { return m_Queue.Count; }
+            get { return Queue.Count; }
         }
 
-        private Queue<EventPair<TEventArgs>> Queue
-        {
-            get { return m_Queue; }
-        }
+        private Queue<EventPair<TEventArgs>> Queue { get; } = new Queue<EventPair<TEventArgs>>();
 
         /// <summary>
         /// Asserts that an event is in the queue.
@@ -168,47 +118,7 @@ namespace Tortuga.Sails.Tests
         /// <param name="e"></param>
         protected void SourceEventFired(object sender, TEventArgs e)
         {
-            m_Queue.Enqueue(new EventPair<TEventArgs>(sender, e));
-        }
-    }
-
-    /// <summary>
-    /// This is an event paired with its sender.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class EventPair<T> where T : EventArgs
-    {
-        readonly T m_EventArgs;
-        readonly object m_Sender;
-
-        /// <summary>
-        /// Creates a new EventPair
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="eventArgs"></param>
-        public EventPair(object sender, T eventArgs)
-        {
-            if (eventArgs == null)
-                throw new ArgumentNullException("eventArgs", "eventArgs is null.");
-
-            m_EventArgs = eventArgs;
-            m_Sender = sender;
-        }
-
-        /// <summary>
-        /// The EventArgs associated with this event.
-        /// </summary>
-        public T EventArgs
-        {
-            get { return m_EventArgs; }
-        }
-
-        /// <summary>
-        /// The sender associated with this event. This may be null.
-        /// </summary>
-        public object Sender
-        {
-            get { return m_Sender; }
+            Queue.Enqueue(new EventPair<TEventArgs>(sender, e));
         }
     }
 }

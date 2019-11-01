@@ -18,7 +18,7 @@ namespace Tortuga.Sails.Converters.Internals
         /// <param name="culture"></param>
         /// <returns></returns>
 
-        public sealed override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public sealed override object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return Convert(value, targetType, parameter, culture);
         }

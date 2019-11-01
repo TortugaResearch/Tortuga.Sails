@@ -8,7 +8,7 @@ namespace Tortuga.Sails
     /// </summary>
     public class DelegateCommand : ICommand
     {
-        readonly Func<bool> m_CanExecute;
+        readonly Func<bool>? m_CanExecute;
 
         readonly Action m_Command;
 
@@ -17,12 +17,9 @@ namespace Tortuga.Sails
         /// </summary>
         /// <param name="command"></param>
         /// <param name="canExecute"></param>
-        public DelegateCommand(Action command, Func<bool> canExecute = null)
+        public DelegateCommand(Action command, Func<bool>? canExecute = null)
         {
-            if (command == null)
-                throw new ArgumentNullException(nameof(command), $"{nameof(command)} is null.");
-
-            m_Command = command;
+            m_Command = command ?? throw new ArgumentNullException(nameof(command), $"{nameof(command)} is null.");
             if (canExecute != null)
                 m_CanExecute = canExecute;
         }
@@ -45,7 +42,7 @@ namespace Tortuga.Sails
             }
         }
 
-        private event EventHandler m_CanExecuteChanged;
+        private event EventHandler? m_CanExecuteChanged;
 
         /// <summary>
         /// Wraps the specified delegate in a DelegateCommand.
@@ -55,7 +52,7 @@ namespace Tortuga.Sails
         /// <param name="canExecute">An optional CanExecute delegate.</param>
         /// <returns></returns>
         /// <remarks>This is just a convenience method for the DelegateCommand constructor for type inference.</remarks>
-        public static DelegateCommand<T> Create<T>(Action<T> command, Func<T, bool> canExecute = null)
+        public static DelegateCommand<T> Create<T>(Action<T> command, Func<T, bool>? canExecute = null)
         {
             return new DelegateCommand<T>(command, canExecute);
         }

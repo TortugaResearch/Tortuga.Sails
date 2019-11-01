@@ -4,7 +4,7 @@ using System.Windows.Input;
 namespace Tortuga.Sails
 {
     /// <summary>
-    /// This represents an ICommand that isn't supported. It is used in abstract base classes where subclasses may optionally overide it.
+    /// This represents an ICommand that isn't supported. It is used in abstract base classes where subclasses may optionally override it.
     /// </summary>
     /// <seealso cref="System.Windows.Input.ICommand" />
     public sealed class NotSupportedCommand : ICommand

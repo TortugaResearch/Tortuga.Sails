@@ -31,12 +31,21 @@ namespace Tortuga.Sails.Converters.Internals
         /// <param name="validParameterTypes"></param>
         /// <remarks>This does not look at type inheritance</remarks>
 
-        public abstract object Convert(object value, Type targetType, object parameter, CultureInfo culture);
+        protected static void CheckRequiredParameterType(object parameter, params Type[] validParameterTypes)
+        {
+            if (validParameterTypes == null)
+                throw new ArgumentNullException(nameof(validParameterTypes), $"{nameof(validParameterTypes)} is null.");
+            if (validParameterTypes.Length == 0)
+                throw new ArgumentException($"{nameof(validParameterTypes)} is empty", nameof(validParameterTypes));
 
-        public abstract object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
+
+            if (parameter == null || !validParameterTypes.Contains(parameter.GetType()))
+                throw new ArgumentException($"Parameter {nameof(parameter)} must be one of " + string.Join(", ", validParameterTypes.Select(t => t.Name).ToArray()), nameof(parameter));
+
+        }
 
         /// <summary>
-        /// Converts a value.
+        /// Converts a value. 
         /// </summary>
         /// <returns>
         /// A converted value. If the method returns null, the valid null value is used.
@@ -53,8 +62,13 @@ namespace Tortuga.Sails.Converters.Internals
         /// <param name="culture">
         /// The culture to use in the converter.
         /// </param>
+
+        public abstract object? Convert(object value, Type targetType, object parameter, CultureInfo culture);
+
+
+
         /// <summary>
-        /// Converts a value.
+        /// Converts a value. 
         /// </summary>
         /// <returns>
         /// A converted value. If the method returns null, the valid null value is used.
@@ -71,11 +85,14 @@ namespace Tortuga.Sails.Converters.Internals
         /// <param name="culture">
         /// The culture to use in the converter.
         /// </param>
+
+        public abstract object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture);
+
         /// <summary>
-        /// When implemented in a derived class, returns an object that is set as the value of the target property for this markup extension.
+        /// When implemented in a derived class, returns an object that is set as the value of the target property for this markup extension. 
         /// </summary>
         /// <returns>
-        /// The object value to set on the property where the extension is applied.
+        /// The object value to set on the property where the extension is applied. 
         /// </returns>
         /// <param name="serviceProvider">
         /// Object that can provide services for the markup extension.
@@ -92,6 +109,7 @@ namespace Tortuga.Sails.Converters.Internals
         /// <param name="parameter">parameter being used for conversion</param>
         /// <remarks></remarks>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
+
         protected static void CheckParameterType<TValueType>(object parameter)
         {
             if (parameter == null)
@@ -114,22 +132,12 @@ namespace Tortuga.Sails.Converters.Internals
             if (validParameterTypes.Length == 0)
                 throw new ArgumentException($"{nameof(validParameterTypes)} is empty", nameof(validParameterTypes));
 
+
             if (parameter == null)
                 return; //allowed
 
             if (!validParameterTypes.Contains(parameter.GetType()))
-                throw new ArgumentException($"Parameter '{nameof(parameter)}' must be null or one of {string.Join(", ", validParameterTypes.Select(t => t.Name).ToArray())}", nameof(parameter));
-        }
-
-        protected static void CheckRequiredParameterType(object parameter, params Type[] validParameterTypes)
-        {
-            if (validParameterTypes == null)
-                throw new ArgumentNullException(nameof(validParameterTypes), $"{nameof(validParameterTypes)} is null.");
-            if (validParameterTypes.Length == 0)
-                throw new ArgumentException($"{nameof(validParameterTypes)} is empty", nameof(validParameterTypes));
-
-            if (parameter == null || !validParameterTypes.Contains(parameter.GetType()))
-                throw new ArgumentException($"Parameter {nameof(parameter)} must be one of " + string.Join(", ", validParameterTypes.Select(t => t.Name).ToArray()), nameof(parameter));
+                throw new ArgumentException($"Parameter '{nameof(parameter)}' must be null or one of {(string.Join(", ", validParameterTypes.Select(t => t.Name).ToArray()))}", nameof(parameter));
         }
 
         /// <summary>
@@ -139,6 +147,7 @@ namespace Tortuga.Sails.Converters.Internals
         /// <param name="parameter">parameter being used for conversion</param>
         /// <remarks></remarks>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
+
         protected static void CheckRequiredParameterType<TValueType>(object parameter)
         {
             if (parameter == null || !(parameter is TValueType))
@@ -164,7 +173,8 @@ namespace Tortuga.Sails.Converters.Internals
                 return; //calling class is willing to accept any type
 
             if (!validTargetTypes.Contains(targetType))
-                throw new ArgumentException($"Parameter '{nameof(targetType)}' must be one of {string.Join(", ", validTargetTypes.Select(t => t.Name).ToArray())}", nameof(targetType));
+
+                throw new ArgumentException($"Parameter '{nameof(targetType)}' must be one of {(string.Join(", ", validTargetTypes.Select(t => t.Name).ToArray()))}", nameof(targetType));
         }
 
         /// <summary>
@@ -172,7 +182,7 @@ namespace Tortuga.Sails.Converters.Internals
         /// </summary>
         /// <param name="value">value being converted</param>
         /// <param name="validValueTypes">List of types that are valid.</param>
-        /// <remarks>This does not look at type inheritance</remarks>
+        /// <remarks>This does not look at type inheritance</remarks>     
         protected static void CheckValueType(object value, params Type[] validValueTypes)
         {
             if (validValueTypes == null)
@@ -184,7 +194,7 @@ namespace Tortuga.Sails.Converters.Internals
                 return; //allowed
 
             if (!validValueTypes.Contains(value.GetType()))
-                throw new ArgumentException($"Parameter '{nameof(value)}' must be null or one of {string.Join(", ", validValueTypes.Select(t => t.Name).ToArray())}", nameof(value));
+                throw new ArgumentException($"Parameter '{nameof(value)}' must be null or one of {(string.Join(", ", validValueTypes.Select(t => t.Name).ToArray()))}", nameof(value));
         }
 
         /// <summary>
@@ -194,6 +204,7 @@ namespace Tortuga.Sails.Converters.Internals
         /// <param name="value">value being converted</param>
         /// <remarks>This does not look at type inheritance</remarks>
         [SuppressMessage("Microsoft.Design", "CA1004:GenericMethodsShouldProvideTypeParameter")]
+
         protected static void CheckValueType<TValueType>(object value)
         {
             if (value == null)
@@ -208,7 +219,7 @@ namespace Tortuga.Sails.Converters.Internals
         /// </summary>
         /// <param name="targetType"></param>
         /// <returns>Null for reference types, and empty instance for value types</returns>
-        protected static object Default(Type targetType)
+        protected static object? Default(Type targetType)
         {
             if (targetType == null)
                 return null;
@@ -218,4 +229,6 @@ namespace Tortuga.Sails.Converters.Internals
                 return null;
         }
     }
+
 }
+

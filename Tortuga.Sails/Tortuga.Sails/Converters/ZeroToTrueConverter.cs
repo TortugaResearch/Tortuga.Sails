@@ -69,13 +69,14 @@ namespace Tortuga.Sails.Converters
     public partial class ZeroToTrueConverter : OneWayMarkupValueConverter<ZeroToTrueConverter>
     {
         /// <summary>
-        ///
+        /// Converts a value.
         /// </summary>
         /// <param name="value">Any numeric type</param>
         /// <param name="targetType">Boolean</param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        /// <exception cref="System.ArgumentException">value is not a number - value</exception>
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -126,7 +127,7 @@ namespace Tortuga.Sails.Converters
             if (value is BigInteger)
                 return (BigInteger)value == 0;
 
-            throw new ArgumentException("value is not a number", "value");
+            throw new ArgumentException($"{nameof(value)} is not a number", nameof(value));
         }
     }
 }

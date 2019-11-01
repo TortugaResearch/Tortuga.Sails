@@ -13,15 +13,22 @@ namespace Tortuga.Sails
         /// <summary>
         /// Occurs when a Command throws an exception.
         /// </summary>
-        public static event EventHandler<UnhandledViewModelExceptionEventArgs> UnhandledCommandError;
+        public static event EventHandler<UnhandledViewModelExceptionEventArgs>? UnhandledCommandError;
 
         /// <summary>
         /// Returns an ICommand wrapped around the provided action.
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        protected DelegateCommand<T> GetCommand<T>(Action<T> command, [CallerMemberName] string propertyName = null)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="command">The command.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <returns>DelegateCommand&lt;T&gt;.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// command
+        /// or
+        /// propertyName
+        /// </exception>
+        /// <exception cref="System.ArgumentException">propertyName</exception>
+        protected DelegateCommand<T> GetCommand<T>(Action<T> command, [CallerMemberName] string propertyName = "")
         {
             if (command == null)
                 throw new ArgumentNullException(nameof(command), $"{nameof(command)} is null.");
@@ -32,7 +39,7 @@ namespace Tortuga.Sails
 
             if (!Properties.IsDefined(propertyName))
             {
-                Action<T> safeCommand = (p) =>
+                void safeCommand(T p)
                 {
                     try
                     {
@@ -45,7 +52,7 @@ namespace Tortuga.Sails
                         if (!args.Handled)
                             throw;
                     }
-                };
+                }
 
                 Properties.Set(new DelegateCommand<T>(p => safeCommand(p)), PropertySetModes.SetAsOriginal, propertyName);
             }
@@ -56,10 +63,16 @@ namespace Tortuga.Sails
         /// <summary>
         /// Returns an ICommand wrapped around the provided action.
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        protected DelegateCommand<object> GetCommand(Action<object> command, [CallerMemberName] string propertyName = null)
+        /// <param name="command">The command.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <returns>DelegateCommand&lt;System.Object&gt;.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// command
+        /// or
+        /// propertyName
+        /// </exception>
+        /// <exception cref="System.ArgumentException">propertyName</exception>
+        protected DelegateCommand<object> GetCommand(Action<object> command, [CallerMemberName] string propertyName = "")
         {
             if (command == null)
                 throw new ArgumentNullException(nameof(command), $"{nameof(command)} is null.");
@@ -70,7 +83,7 @@ namespace Tortuga.Sails
 
             if (!Properties.IsDefined(propertyName))
             {
-                Action<object> safeCommand = (p) =>
+                void safeCommand(object p)
                 {
                     try
                     {
@@ -83,7 +96,7 @@ namespace Tortuga.Sails
                         if (!args.Handled)
                             throw;
                     }
-                };
+                }
 
                 Properties.Set(new DelegateCommand<object>(safeCommand), PropertySetModes.SetAsOriginal, propertyName);
             }
@@ -94,10 +107,16 @@ namespace Tortuga.Sails
         /// <summary>
         /// Returns an ICommand wrapped around the provided action.
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="command"></param>
-        /// <returns></returns>
-        protected DelegateCommand GetCommand(Action command, [CallerMemberName] string propertyName = null)
+        /// <param name="command">The command.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <returns>DelegateCommand.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// command
+        /// or
+        /// propertyName
+        /// </exception>
+        /// <exception cref="System.ArgumentException">propertyName</exception>
+        protected DelegateCommand GetCommand(Action command, [CallerMemberName] string propertyName = "")
         {
             if (command == null)
                 throw new ArgumentNullException(nameof(command), $"{nameof(command)} is null.");
@@ -108,7 +127,7 @@ namespace Tortuga.Sails
 
             if (!Properties.IsDefined(propertyName))
             {
-                Action safeCommand = () =>
+                void safeCommand()
                 {
                     try
                     {
@@ -121,7 +140,7 @@ namespace Tortuga.Sails
                         if (!args.Handled)
                             throw;
                     }
-                };
+                }
 
                 Properties.Set(new DelegateCommand(safeCommand), PropertySetModes.SetAsOriginal, propertyName);
             }
@@ -132,11 +151,18 @@ namespace Tortuga.Sails
         /// <summary>
         /// Returns an ICommand wrapped around the provided action.
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="command"></param>
-        /// <param name="canExecute"></param>
-        /// <returns></returns>
-        protected DelegateCommand<T> GetCommand<T>(Action<T> command, Func<T, bool> canExecute, [CallerMemberName] string propertyName = null)
+        /// <typeparam name="T"></typeparam>
+        /// <param name="command">The command.</param>
+        /// <param name="canExecute">The can execute.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <returns>DelegateCommand&lt;T&gt;.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// command
+        /// or
+        /// propertyName
+        /// </exception>
+        /// <exception cref="System.ArgumentException">propertyName</exception>
+        protected DelegateCommand<T> GetCommand<T>(Action<T> command, Func<T, bool> canExecute, [CallerMemberName] string propertyName = "")
         {
             if (command == null)
                 throw new ArgumentNullException(nameof(command), $"{nameof(command)} is null.");
@@ -147,7 +173,7 @@ namespace Tortuga.Sails
 
             if (!Properties.IsDefined(propertyName))
             {
-                Action<T> safeCommand = (p) =>
+                void safeCommand(T p)
                 {
                     try
                     {
@@ -160,7 +186,7 @@ namespace Tortuga.Sails
                         if (!args.Handled)
                             throw;
                     }
-                };
+                }
 
                 Properties.Set(new DelegateCommand<T>(p => safeCommand(p), p => canExecute(p)), PropertySetModes.SetAsOriginal, propertyName);
             }
@@ -171,11 +197,17 @@ namespace Tortuga.Sails
         /// <summary>
         /// Returns an ICommand wrapped around the provided action.
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="command"></param>
-        /// <param name="canExecute"></param>
-        /// <returns></returns>
-        protected DelegateCommand<object> GetCommand(Action<object> command, Func<object, bool> canExecute, [CallerMemberName] string propertyName = null)
+        /// <param name="command">The command.</param>
+        /// <param name="canExecute">The can execute.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <returns>DelegateCommand&lt;System.Object&gt;.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// command
+        /// or
+        /// propertyName
+        /// </exception>
+        /// <exception cref="System.ArgumentException">propertyName</exception>
+        protected DelegateCommand<object> GetCommand(Action<object> command, Func<object, bool> canExecute, [CallerMemberName] string propertyName = "")
         {
             if (command == null)
                 throw new ArgumentNullException(nameof(command), $"{nameof(command)} is null.");
@@ -186,7 +218,7 @@ namespace Tortuga.Sails
 
             if (!Properties.IsDefined(propertyName))
             {
-                Action<object> safeCommand = (p) =>
+                void safeCommand(object p)
                 {
                     try
                     {
@@ -199,7 +231,7 @@ namespace Tortuga.Sails
                         if (!args.Handled)
                             throw;
                     }
-                };
+                }
 
                 Properties.Set(new DelegateCommand<object>(safeCommand, canExecute), PropertySetModes.SetAsOriginal, propertyName);
             }
@@ -210,11 +242,17 @@ namespace Tortuga.Sails
         /// <summary>
         /// Returns an ICommand wrapped around the provided action.
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="command"></param>
-        /// <param name="canExecute"></param>
-        /// <returns></returns>
-        protected DelegateCommand GetCommand(Action command, Func<bool> canExecute, [CallerMemberName] string propertyName = null)
+        /// <param name="command">The command.</param>
+        /// <param name="canExecute">The can execute.</param>
+        /// <param name="propertyName">Name of the property.</param>
+        /// <returns>DelegateCommand.</returns>
+        /// <exception cref="System.ArgumentNullException">
+        /// command
+        /// or
+        /// propertyName
+        /// </exception>
+        /// <exception cref="System.ArgumentException">propertyName</exception>
+        protected DelegateCommand GetCommand(Action command, Func<bool> canExecute, [CallerMemberName] string propertyName = "")
         {
             if (command == null)
                 throw new ArgumentNullException(nameof(command), $"{nameof(command)} is null.");
@@ -225,7 +263,7 @@ namespace Tortuga.Sails
 
             if (!Properties.IsDefined(propertyName))
             {
-                Action safeCommand = () =>
+                void safeCommand()
                 {
                     try
                     {
@@ -238,7 +276,7 @@ namespace Tortuga.Sails
                         if (!args.Handled)
                             throw;
                     }
-                };
+                }
 
                 Properties.Set(new DelegateCommand(safeCommand, canExecute), PropertySetModes.SetAsOriginal, propertyName);
             }

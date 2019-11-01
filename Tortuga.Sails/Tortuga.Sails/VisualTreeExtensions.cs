@@ -65,7 +65,7 @@ namespace Tortuga.Sails
         /// <typeparam name="T">Type to search for</typeparam>
         /// <param name="control">The control.</param>
         /// <returns></returns>
-        public static T GetVisualChild<T>(this DependencyObject control) where T : DependencyObject
+        public static T? GetVisualChild<T>(this DependencyObject control) where T : DependencyObject
         {
             var childCount = VisualTreeHelper.GetChildrenCount(control);
             for (var i = 0; i < childCount; i++)
@@ -90,7 +90,7 @@ namespace Tortuga.Sails
         /// <param name="control">The control.</param>
         /// <param name="targetType">Type to search for.</param>
         /// <returns></returns>
-        public static DependencyObject GetVisualChild(this DependencyObject control, Type targetType)
+        public static DependencyObject? GetVisualChild(this DependencyObject control, Type targetType)
         {
             var childCount = VisualTreeHelper.GetChildrenCount(control);
             for (var i = 0; i < childCount; i++)
@@ -115,7 +115,7 @@ namespace Tortuga.Sails
         /// <typeparam name="T">Type to search for</typeparam>
         /// <param name="control">The control.</param>
         /// <returns></returns>
-        public static T GetVisualParent<T>(this DependencyObject control) where T : DependencyObject
+        public static T? GetVisualParent<T>(this DependencyObject control) where T : DependencyObject
         {
             var parent = VisualTreeHelper.GetParent(control);
 
@@ -133,7 +133,7 @@ namespace Tortuga.Sails
         /// <param name="control">The control.</param>
         /// <param name="targetType">Type to search for.</param>
         /// <returns></returns>
-        public static DependencyObject GetVisualParent(this DependencyObject control, Type targetType)
+        public static DependencyObject? GetVisualParent(this DependencyObject control, Type targetType)
         {
             var parent = VisualTreeHelper.GetParent(control);
 

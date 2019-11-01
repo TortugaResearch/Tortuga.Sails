@@ -17,13 +17,13 @@ namespace Tortuga.Sails.Converters
     public class FalseToVisibleConverter : OneWayMarkupValueConverter<FalseToVisibleConverter>
     {
         /// <summary>
-        ///
+        /// Converts a value.
         /// </summary>
         /// <param name="value">Boolean</param>
         /// <param name="targetType">Visibility</param>
         /// <param name="parameter">Visibility to use when the bound value is true or null.</param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
 
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -37,7 +37,7 @@ namespace Tortuga.Sails.Converters
             else
             {
                 var stringParameter = parameter as string;
-                if (stringParameter != null && stringParameter.ToUpperInvariant() == "HIDDEN")
+                if (stringParameter != null && string.Compare(stringParameter.ToUpperInvariant(), "HIDDEN", StringComparison.Ordinal) == 0)
                     newVisibility = Visibility.Hidden;
             }
 

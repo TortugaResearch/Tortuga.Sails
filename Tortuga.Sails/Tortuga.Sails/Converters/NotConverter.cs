@@ -13,15 +13,15 @@ namespace Tortuga.Sails.Converters
     public sealed class NotConverter : MarkupValueConverter<NotConverter>
     {
         /// <summary>
-        ///
+        /// Converts a value.
         /// </summary>
         /// <param name="value">Boolean</param>
         /// <param name="targetType">Boolean</param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
 
-        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             CheckValueType<bool>(value);
             CheckTargetType(targetType, typeof(bool), typeof(bool?));
@@ -36,15 +36,15 @@ namespace Tortuga.Sails.Converters
         }
 
         /// <summary>
-        ///
+        /// Converts a value.
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="targetType"></param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="value">The value that is produced by the binding target.</param>
+        /// <param name="targetType">The type to convert to.</param>
+        /// <param name="parameter">The converter parameter to use.</param>
+        /// <param name="culture">The culture to use in the converter.</param>
+        /// <returns>A converted value. If the method returns null, the valid null value is used.</returns>
 
-        public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public override object? ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return Convert(value, targetType, parameter, culture);
         }
