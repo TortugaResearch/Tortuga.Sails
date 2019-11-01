@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE0036: Order modifiers
+dotnet_diagnostic.IDE0036.severity = none
+
+# RCS1018: Add accessibility modifiers.
+dotnet_diagnostic.RCS1018.severity = none

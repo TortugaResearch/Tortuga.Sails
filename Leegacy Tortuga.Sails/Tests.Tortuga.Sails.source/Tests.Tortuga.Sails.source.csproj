@@ -64,7 +64,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="shared\Class1.cs" />
+    <Compile Include="shared\EventAssert`1.cs" />
     <Compile Include="shared\DelegateCommand1Tests.cs" />
     <Compile Include="shared\DelegateCommandTests.cs" />
     <Compile Include="shared\Converters\ConverterTest.cs" />
