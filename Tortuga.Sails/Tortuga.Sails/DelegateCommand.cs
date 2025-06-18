@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace Tortuga.Sails
 {
@@ -28,7 +27,7 @@ namespace Tortuga.Sails
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
         /// <remarks> This event only exists if a CanExecute delegate is provided. Otherwise add/remove are no-ops.</remarks>
-        public event EventHandler CanExecuteChanged
+        public event EventHandler? CanExecuteChanged
         {
             add
             {
@@ -78,7 +77,7 @@ namespace Tortuga.Sails
         /// <returns>
         /// true if this command can be executed; otherwise, false.
         /// </returns>
-		bool ICommand.CanExecute(object parameter)
+		bool ICommand.CanExecute(object? parameter)
         {
             return CanExecute();
         }
@@ -95,7 +94,7 @@ namespace Tortuga.Sails
         /// Defines the method to be called when the command is invoked.
         /// </summary>
         /// <param name="parameter">Data used by the command.  If the command does not require data to be passed, this object can be set to null.</param>
-		void ICommand.Execute(object parameter)
+		void ICommand.Execute(object? parameter)
         {
             Execute();
         }

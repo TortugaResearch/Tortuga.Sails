@@ -1,52 +1,53 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
-  <PropertyGroup>
-    <TargetFrameworks>net461;netcoreapp3.0</TargetFrameworks>
-    <Authors>David Tomcik, Jonathan Allen</Authors>
-    <Company>Tortuga Technologies</Company>
-    <Description>A library for XAML and MVVM style applications.</Description>
-    <PackageTags>MVVM, XAML, WPF</PackageTags>
-    <UseWPF>true</UseWPF>
-    <LangVersion>8.0</LangVersion>
-    <Deterministic>false</Deterministic>
-    <ProductName>Tortuga Sails</ProductName>
-    <AssemblyVersion>3.0.*</AssemblyVersion>
-    <Version>3.0.0</Version>
-    <FileVersion>3.0.0.0</FileVersion>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-windows</TargetFrameworks>
+		<Authors>David Tomcik, Jonathan Allen</Authors>
+		<Company>Tortuga Research</Company>
+		<Description>A library for XAML and MVVM style applications.</Description>
+		<PackageTags>MVVM, XAML, WPF</PackageTags>
+		<UseWPF>true</UseWPF>
+		<LangVersion>13.0</LangVersion>
+		<Deterministic>true</Deterministic>
+		<ProductName>Tortuga Sails</ProductName>
+		<ImplicitUsings>true</ImplicitUsings>
 
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-    <Copyright>David Tomcik, Jonathan Allen 2016-2019</Copyright>
+		<!--<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<AnalysisLevel>latest</AnalysisLevel>-->
 
-    <PackageProjectUrl>https://github.com/Grauenwolf/Sails</PackageProjectUrl>
+		<Version>5.0.0</Version>
 
-    <RepositoryUrl>https://github.com/Grauenwolf/Sails.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <Nullable>enable</Nullable>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <RootNamespace>Tortuga.Sails</RootNamespace>
+		<Copyright>David Tomcik, Jonathan Allen 2016-2019</Copyright>
 
-    <DocumentationFile>Tortuga.Sails.xml</DocumentationFile>
-  </PropertyGroup>
+		<PackageProjectUrl>https://github.com/Grauenwolf/Sails</PackageProjectUrl>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.3" />
-    <PackageReference Include="Tortuga.Anchor" Version="3.0.7223.26309" />
-  </ItemGroup>
+		<RepositoryUrl>https://github.com/Grauenwolf/Sails.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<Nullable>enable</Nullable>
 
-  <!-- NuGet Packaging Boilerplate-->
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);ReadPackageVersionFromOutputAssembly</GenerateNuspecDependsOn>
-  </PropertyGroup>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+		<RootNamespace>Tortuga.Sails</RootNamespace>
 
-  <Target Name="ReadPackageVersionFromOutputAssembly" DependsOnTargets="Build" Condition="'$(IsCrossTargetingBuild)' == 'true'">
+		<DocumentationFile>Tortuga.Sails.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+		<PackageReference Include="Tortuga.Anchor" Version="5.0" />
+	</ItemGroup>
+
+	<!-- NuGet Packaging Boilerplate-->
+	<PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<!--<GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);ReadPackageVersionFromOutputAssembly</GenerateNuspecDependsOn>-->
+	</PropertyGroup>
+
+	<!--<Target Name="ReadPackageVersionFromOutputAssembly" DependsOnTargets="Build" Condition="'$(IsCrossTargetingBuild)' == 'true'">
 
     <PropertyGroup>
       <FirstTargetFramework>$([System.String]::Copy($(TargetFrameworks)).Split(';').GetValue(0))</FirstTargetFramework>
@@ -66,5 +67,5 @@
     <PropertyGroup>
       <PackageVersion>%(PackAssembly.Version)</PackageVersion>
     </PropertyGroup>
-  </Target>
+  </Target>-->
 </Project>
