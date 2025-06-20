@@ -10,40 +10,56 @@
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-            <Label Content="Box 1"/>
+            <Label Content="Box 1" />
             <TextBox Width="100" Text="THis is some text" s:SelectAllTextBoxBehavior.IsEnabled="True" />
-            <Label Content="Box 2"/>
-            <TextBox Width="100" Text="More text" >
+            <Label Content="Box 2" />
+            <TextBox Width="100" Text="More text">
                 <b:Interaction.Behaviors>
-                    <s:SelectAllTextBoxBehavior  />
+                    <s:SelectAllTextBoxBehavior />
                 </b:Interaction.Behaviors>
             </TextBox>
-            <Button Content="Hello"/>
-
+            <Button Content="Hello" />
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-            <Label Content="Box 1"/>
+            <Label Content="Box 1" />
             <TextBox Width="100" Text="THis is some text" s:SelectAllTextBoxBehavior.SelectOnMouseClick="True" />
-            <Label Content="Box 2"/>
-            <TextBox Width="100" Text="More text" >
+            <Label Content="Box 2" />
+            <TextBox Width="100" Text="More text">
                 <b:Interaction.Behaviors>
-                    <s:SelectAllTextBoxBehavior OnMouseClick="True"/>
+                    <s:SelectAllTextBoxBehavior OnMouseClick="True" />
                 </b:Interaction.Behaviors>
             </TextBox>
-            <Button Content="Hello"/>
-
+            <Button Content="Hello" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-            <Label Content="Box 1"/>
+            <Label Content="Box 1" />
             <TextBox Width="100" Text="THis is some text" />
-            <Label Content="Box 2"/>
-            <TextBox Width="100" Text="More text" >
-
+            <Label Content="Box 2" />
+            <TextBox Width="100" Text="More text">
             </TextBox>
-            <Button Content="Hello"/>
-
+            <Button Content="Hello" />
         </StackPanel>
-        <StackPanel />
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Simple" />
+                <TextBox Width="100" Text="{Binding Simple}" />
+                <TextBlock Width="100" Text="NULL" Visibility="{Binding Simple, Converter={StaticResource NullToVisibleConverter}}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Nullable" />
+                <TextBox Width="100" Text="{Binding Nullable, Converter={StaticResource NullableValueConverter}}" />
+                <TextBlock Width="100" Text="NULL" Visibility="{Binding Nullable, Converter={StaticResource NullToVisibleConverter}}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="SimpleInt" />
+                <TextBox Width="100" Text="{Binding SimpleInt}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="NullableInt" />
+                <TextBox Width="100" Text="{Binding NullableInt, Converter={StaticResource NullableValueConverter}}" />
+                <TextBlock Width="100" Text="NULL" Visibility="{Binding NullableInt, Converter={StaticResource NullToVisibleConverter}}" />
+            </StackPanel>
+        </StackPanel>
     </DockPanel>
 </Window>

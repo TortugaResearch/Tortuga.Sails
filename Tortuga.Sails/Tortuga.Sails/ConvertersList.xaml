@@ -9,6 +9,7 @@
     <converters:NotNullToVisibleConverter x:Key="NotNullToVisibleConverter" />
     <converters:NotZeroToTrueConverter x:Key="NotZeroToTrueConverter" />
     <converters:NotZeroToVisibleConverter x:Key="NotZeroToVisibleConverter" />
+    <converters:NullableValueConverter x:Key="NullableValueConverter" />
     <converters:NullToTrueConverter x:Key="NullToTrueConverter" />
     <converters:NullToVisibleConverter x:Key="NullToVisibleConverter" />
     <converters:StringToLowerConverter x:Key="StringToLowerConverter" />
@@ -16,4 +17,6 @@
     <converters:TrueToVisibleConverter x:Key="TrueToVisibleConverter" />
     <converters:ZeroToTrueConverter x:Key="ZeroToTrueConverter" />
     <converters:ZeroToVisibleConverter x:Key="ZeroToVisibleConverter" />
+    <converters:EmptyToVisibleConverter x:Key="EmptyToVisibleConverter" />
+    <converters:NotEmptyToVisibleConverter x:Key="NotEmptyToVisibleConverter" />
 </ResourceDictionary>

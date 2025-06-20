@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Globalization;
 using System.Numerics;
 using System.Windows;
@@ -11,13 +10,13 @@ namespace Tortuga.Sails.Converters
     /// <summary>
     /// Converts null to Collapsed.
     /// Converts 0 to Collapsed, other numbers to Visible.
-    /// Throws on non-numeric types
+    /// Throws if the type isn't a number, string, or list
     /// For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
     /// </summary>
-    [ValueConversion(typeof(BigInteger), typeof(bool))]
-    [ValueConversion(typeof(BigInteger), typeof(bool?))]
-    [ValueConversion(typeof(BigInteger?), typeof(bool))]
-    [ValueConversion(typeof(BigInteger?), typeof(bool?))]
+    [ValueConversion(typeof(BigInteger), typeof(Visibility))]
+    [ValueConversion(typeof(BigInteger), typeof(Visibility?))]
+    [ValueConversion(typeof(BigInteger?), typeof(Visibility))]
+    [ValueConversion(typeof(BigInteger?), typeof(Visibility?))]
     [ValueConversion(typeof(byte), typeof(Visibility))]
     [ValueConversion(typeof(byte), typeof(Visibility?))]
     [ValueConversion(typeof(byte?), typeof(Visibility))]

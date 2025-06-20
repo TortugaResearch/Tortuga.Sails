@@ -1,19 +1,14 @@
 ﻿using System.Globalization;
 using System.Windows;
-using System.Windows.Data;
 using Tortuga.Sails.Converters.Internals;
 
 namespace Tortuga.Sails.Converters;
 
 /// <summary>
-/// Use this converter to show a control when the bound value is null.
+/// Use this converter to show a control when the bound value is null or an empty string.
 /// For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
 /// </summary>
-/// <remarks>
-/// For empty strings, use EmptyToVisibleConverter
-/// </remarks>
-[ValueConversion(typeof(object), typeof(Visibility))]
-public class NullToVisibleConverter : OneWayMarkupValueConverter<NullToVisibleConverter>
+public class EmptyToVisibleConverter : OneWayMarkupValueConverter<EmptyToVisibleConverter>
 {
     /// <summary>
     /// Converts a value.
@@ -38,6 +33,9 @@ public class NullToVisibleConverter : OneWayMarkupValueConverter<NullToVisibleCo
         }
 
         if (value == null)
+            return Visibility.Visible;
+
+        if (value is string && string.IsNullOrWhiteSpace((string)value))
             return Visibility.Visible;
 
         return newVisibility;

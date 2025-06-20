@@ -5,10 +5,10 @@ using Tortuga.Sails.Converters;
 namespace Tortuga.Sails.Tests.Converters;
 
 [TestClass]
-public class NotNullToVisibleConverterTests : ConverterTest<NotNullToVisibleConverter>
+public class NotEmptyToVisibleConverterTests : ConverterTest<NotEmptyToVisibleConverter>
 {
     [TestMethod]
-    public void NotNullToVisibleConverter_Test()
+    public void NotEmptyToVisibleConverter_Test()
     {
         Convert(Visibility.Collapsed, null);
         Convert(Visibility.Collapsed, null, Visibility.Collapsed);
@@ -22,11 +22,11 @@ public class NotNullToVisibleConverterTests : ConverterTest<NotNullToVisibleConv
         Convert(Visibility.Visible, 0, "Collapsed");
         Convert(Visibility.Visible, 0, "Hidden");
 
-        Convert(Visibility.Visible, "");
-        Convert(Visibility.Visible, "", Visibility.Collapsed);
-        Convert(Visibility.Visible, "", Visibility.Hidden);
-        Convert(Visibility.Visible, "", "Collapsed");
-        Convert(Visibility.Visible, "", "Hidden");
+        Convert(Visibility.Collapsed, "");
+        Convert(Visibility.Collapsed, "", Visibility.Collapsed);
+        Convert(Visibility.Hidden, "", Visibility.Hidden);
+        Convert(Visibility.Collapsed, "", "Collapsed");
+        Convert(Visibility.Hidden, "", "Hidden");
 
         Convert(Visibility.Visible, "a");
         Convert(Visibility.Visible, "a", Visibility.Collapsed);

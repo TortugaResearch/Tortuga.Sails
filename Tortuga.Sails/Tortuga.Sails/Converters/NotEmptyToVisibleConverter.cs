@@ -6,19 +6,16 @@ using Tortuga.Sails.Converters.Internals;
 namespace Tortuga.Sails.Converters;
 
 /// <summary>
-/// Use this converter to show a control when the bound value is null.
+/// Use this converter to hide a control when the bound value is null or an empty string.
 /// For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
 /// </summary>
-/// <remarks>
-/// For empty strings, use EmptyToVisibleConverter
-/// </remarks>
 [ValueConversion(typeof(object), typeof(Visibility))]
-public class NullToVisibleConverter : OneWayMarkupValueConverter<NullToVisibleConverter>
+public class NotEmptyToVisibleConverter : OneWayMarkupValueConverter<NotEmptyToVisibleConverter>
 {
     /// <summary>
     /// Converts a value.
     /// </summary>
-    /// <param name="value">Any nullable type</param>
+    /// <param name="value">The value produced by the binding source.</param>
     /// <param name="targetType">Visibility</param>
     /// <param name="parameter">The converter parameter to use.</param>
     /// <param name="culture">The culture to use in the converter.</param>
@@ -26,6 +23,9 @@ public class NullToVisibleConverter : OneWayMarkupValueConverter<NullToVisibleCo
 
     public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
+        CheckTargetType(targetType, typeof(Visibility), typeof(Visibility?));
+        CheckParameterType(parameter, typeof(Visibility), typeof(string));
+
         var newVisibility = Visibility.Collapsed;
 
         if (parameter is Visibility)
@@ -38,8 +38,11 @@ public class NullToVisibleConverter : OneWayMarkupValueConverter<NullToVisibleCo
         }
 
         if (value == null)
-            return Visibility.Visible;
+            return newVisibility;
 
-        return newVisibility;
+        if (value is string && string.IsNullOrWhiteSpace((string)value))
+            return newVisibility;
+
+        return Visibility.Visible;
     }
 }

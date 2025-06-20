@@ -218,6 +218,22 @@
             <param name="culture">The culture to use in the converter.</param>
             <returns>A converted value. If the method returns null, the valid null value is used.</returns>
         </member>
+        <member name="T:Tortuga.Sails.Converters.EmptyToVisibleConverter">
+            <summary>
+            Use this converter to show a control when the bound value is null or an empty string.
+            For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.EmptyToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">Any nullable type</param>
+            <param name="targetType">Visibility</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
         <member name="T:Tortuga.Sails.Converters.FalseToVisibleConverter">
             <summary>
             Use this converter to show a control when the bound value is false. Null/true will hide the control.
@@ -417,6 +433,22 @@
             <param name="culture">The culture to use in the converter.</param>
             <returns>A converted value. If the method returns null, the valid null value is used.</returns>
         </member>
+        <member name="T:Tortuga.Sails.Converters.NotEmptyToVisibleConverter">
+            <summary>
+            Use this converter to hide a control when the bound value is null or an empty string.
+            For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
+            </summary>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NotEmptyToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">Visibility</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns null, the valid null value is used.</returns>
+        </member>
         <member name="T:Tortuga.Sails.Converters.NotNullToTrueConverter">
             <summary>
             Returns True if the value is not null, otherwise returns false
@@ -434,9 +466,12 @@
         </member>
         <member name="T:Tortuga.Sails.Converters.NotNullToVisibleConverter">
             <summary>
-            Use this converter to hide a control when the bound value is null or an empty string.
+            Use this converter to hide a control when the bound value is null.
             For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
             </summary>
+            <remarks>
+            For empty strings, use NotEmptyToVisibleConverter
+            </remarks>
         </member>
         <member name="M:Tortuga.Sails.Converters.NotNullToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
             <summary>
@@ -485,6 +520,33 @@
             <returns>A converted value. If the method returns null, the valid null value is used.</returns>
             <exception cref="T:System.ArgumentException">value is not a number - value</exception>
         </member>
+        <member name="T:Tortuga.Sails.Converters.NullableValueConverter">
+            <summary>
+            Converts empty strings into nulls.
+            Implements the <see cref="T:System.Windows.Data.IValueConverter" />
+            </summary>
+            <seealso cref="T:System.Windows.Data.IValueConverter" />
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NullableValueConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value produced by the binding source.</param>
+            <param name="targetType">The type of the binding target property.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns <see langword="null" />, the valid null value is used.</returns>
+        </member>
+        <member name="M:Tortuga.Sails.Converters.NullableValueConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts a value.
+            </summary>
+            <param name="value">The value that is produced by the binding target.</param>
+            <param name="targetType">The type to convert to.</param>
+            <param name="parameter">The converter parameter to use.</param>
+            <param name="culture">The culture to use in the converter.</param>
+            <returns>A converted value. If the method returns <see langword="null" />, the valid null value is used.</returns>
+        </member>
         <member name="T:Tortuga.Sails.Converters.NullToTrueConverter">
             <summary>
             Returns True if the value is null, otherwise returns false
@@ -502,9 +564,12 @@
         </member>
         <member name="T:Tortuga.Sails.Converters.NullToVisibleConverter">
             <summary>
-            Use this converter to show a control when the bound value is null or an empty string.
+            Use this converter to show a control when the bound value is null.
             For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
             </summary>
+            <remarks>
+            For empty strings, use EmptyToVisibleConverter
+            </remarks>
         </member>
         <member name="M:Tortuga.Sails.Converters.NullToVisibleConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)">
             <summary>
@@ -586,7 +651,7 @@
             <summary>
             Converts null to Collapsed.
             Converts 0 to Collapsed, other numbers to Visible.
-            Throws on non-numeric types
+            Throws if the type isn't a number, string, or list
             For WPF, the parameter is used to choose between Collapsed and Hidden. The default is Collapsed.
             </summary>
         </member>
@@ -896,6 +961,36 @@
             <param name="control">The control.</param>
             <param name="targetType">Type to search for.</param>
             <returns></returns>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
         </member>
     </members>
 </doc>
