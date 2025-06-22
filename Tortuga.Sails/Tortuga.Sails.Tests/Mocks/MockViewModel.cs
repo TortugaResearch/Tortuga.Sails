@@ -1,13 +1,35 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Tortuga.Sails.Tests.ViewModel
 {
     public class MockViewModel : ViewModelBase
     {
+        public ICommand AsyncGCommand => GetCommand(AsyncG);
+
+        public ICommand AsyncHCommand => GetCommand(AsyncH);
+
+        public ICommand AsyncICommand => GetCommand<int>(AsyncI);
+
         public ICommand Test
         {
             get { return Get<ICommand>("Test"); }
+        }
+
+        public async Task AsyncG()
+        {
+            await Task.Delay(1);
+        }
+
+        public async Task<int> AsyncH()
+        {
+            await Task.Delay(1); return 1;
+        }
+
+        public async Task<long> AsyncI(int echo)
+        {
+            await Task.Delay(1); return echo;
         }
 
         public DelegateCommand<T> InvokeGetCommandA<T>(string propertyName, Action<T> command)

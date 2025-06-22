@@ -814,6 +814,36 @@
             Occurs when a Command throws an exception.
             </summary>
         </member>
+        <member name="M:Tortuga.Sails.ViewModelBase.GetCommand``1(System.Func{``0,System.Threading.Tasks.Task},System.String)">
+            <summary>
+            Returns an ICommand wrapped around the provided asynchronous action.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="command">The command.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>DelegateCommand&lt;T&gt;.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            command
+            or
+            propertyName
+            </exception>
+            <exception cref="T:System.ArgumentException">propertyName</exception>
+            <remarks>For this overload, you may need to explicitly provide the type parameter</remarks>
+        </member>
+        <member name="M:Tortuga.Sails.ViewModelBase.GetCommand(System.Func{System.Threading.Tasks.Task},System.String)">
+            <summary>
+            Returns an ICommand wrapped around the provided asynchronous action.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>DelegateCommand.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            command
+            or
+            propertyName
+            </exception>
+            <exception cref="T:System.ArgumentException">propertyName</exception>
+        </member>
         <member name="M:Tortuga.Sails.ViewModelBase.GetCommand``1(System.Action{``0},System.String)">
             <summary>
             Returns an ICommand wrapped around the provided action.
